@@ -1,0 +1,31 @@
+// global color
+$color-1:#fff;
+$color-2:#9624b6;
+$color-3:#4d39bd;
+$color-4:#4c466e;
+$color-5:#1b1e24;
+$color-6:#27c9d8;
+
+
+//fonts color
+$font-color:$color-1;
+
+//spacing
+$spacing-top:60px;
+$spacing-botom:60px;
+$content-spacing:30px;
+
+
+//buttons
+$button-primary-background-color: $color-6;
+$button-primary-text-color:$color-1;
+$button-primary-border-color:$color-6;
+$button-primary-border-radius : 30px;
+
+
+$button-secondary-background-color: transparent;
+$button-secondary-text-color:$color-6;
+$button-secondary-border-color:$color-6;
+$button-secondary-border-radius : 30px;
+$button-secondary-hover-background-color:$color-6;
+$button-secondary-hover-text-color:$color-1;

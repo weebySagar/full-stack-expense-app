@@ -1,0 +1,11 @@
+@import "../theme-variable.scss";
+header{
+    .navbar{
+        background-color: $color-5 !important;
+
+        .navbar-brand{
+
+            color: $color-1 !important;
+        }
+    }
+}

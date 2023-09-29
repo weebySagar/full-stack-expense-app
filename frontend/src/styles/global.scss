@@ -1,0 +1,44 @@
+@import "./theme-variable.scss";
+body{
+    background-color: $color-5;
+    color: $font-color;
+}
+
+button{
+
+    &.btn-primary{
+        background-color: $button-primary-background-color;
+        color: $button-primary-text-color;
+        border-radius: $button-primary-border-radius;
+        outline: none;
+        padding:8px 20px;
+        border: none    ;
+    }
+
+    &.btn-secondary{
+        background-color: $button-secondary-background-color;
+        color: $button-secondary-text-color;
+        border-radius: $button-secondary-border-radius;
+        outline: none;
+        padding:8px 20px;
+        border:1px solid $button-secondary-border-color;
+
+        &:hover{
+            background-color: $button-secondary-hover-background-color;
+            color: $button-secondary-hover-text-color;
+        }
+    }
+}
+
+.inner-wrapper{
+    padding-top: $spacing-top;
+    padding-bottom: $spacing-botom;
+}
+
+.content-wrapper{
+    margin-top: $content-spacing
+}
+
+.subheading{
+    opacity: 0.8;
+}
