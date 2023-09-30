@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import {  useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
+import {addUser} from '../services/user-api'
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -63,9 +66,23 @@ const SignUpForm = () => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         if(validateForm()){
-
-            console.log(userData);
-        }
+          const data =addUser(userData);
+          
+          toast.promise(data,{
+            loading:'Hang on...',
+            success:()=>{
+            setUserData({
+              name:'',
+              email:'',
+              password:''
+            });
+            return `User created successfully`
+          },
+            error:(err)=>err.toString()
+          })
+          
+          }
+        
     }
 
     
@@ -83,7 +100,7 @@ const SignUpForm = () => {
 
                 <div className="mb-3 group-input">
                     <label htmlFor="email" className="form-label subheading">Email address</label>
-                    <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" value={userData.email} onChange={handeInputChange} required='false'/>
+                    <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" value={userData.email} onChange={handeInputChange} />
                 </div>
                 {errors.email && <p className='text-danger'>{errors.email}</p>}
 
