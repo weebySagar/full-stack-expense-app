@@ -12,3 +12,12 @@ try {
     
 }
 }
+
+export const loginUser = async(userData)=>{
+    try {
+        const {data} =await axios.post(baseUrl+'/login',userData);
+        return data
+    } catch (error) {
+        throw error.response.data.error
+    }
+}
