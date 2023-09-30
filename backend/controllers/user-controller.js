@@ -1,10 +1,11 @@
-const { where } = require('sequelize');
 const User = require('../models/user-model');
+const bcrypt = require('bcrypt')
 
 exports.addUser=async(req,res)=>{
     const {name,email,password} = req.body;
     try {
-       const response = await User.create({name,email,password});
+        const hashedPassword =await bcrypt.hash(password,10)
+       const response = await User.create({name,email,password:hashedPassword});
        await res.status(201).json(response)
     } catch (error) {
         res.status(400).json({error:error.errors[0].message})
@@ -17,13 +18,16 @@ exports.loginUser = async(req,res)=>{
         const user = await User.findOne({where:{email}});
         
         if(user){
-            const isPasswordValid =  user.dataValues.password == password;
-            if(isPasswordValid){
-                res.status(200).json({message:'User login successfully'})
-            }
-            else{
-                res.status(401).json({error:'User not authorized'})
-            }
+            
+            bcrypt.compare(password,user.dataValues.password,(err,result)=>{
+                if(result){
+                    res.status(200).json({message:'User login successfully'})
+                }
+                else{
+                    res.status(401).json({error:'User not authorized'})
+                }
+            })
+            
         }
         else{
             res.status(404).json({error:'User not found'})
