@@ -1,0 +1,25 @@
+@import "../theme-variable.scss";
+
+.expense-data{
+    background-color: $color-7;
+    padding:  20px;
+    border-radius: 15px;
+
+    .card{
+        border: none;
+    }
+
+    .expense-table{
+        table{
+            width: 100%;
+        }
+        th{
+            padding: 20px 10px;
+        }
+        td{
+            padding: 10px;
+            color:#ccc;
+            // text-align: center;
+        }
+    }
+}

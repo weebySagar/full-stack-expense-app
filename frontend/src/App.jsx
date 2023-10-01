@@ -5,6 +5,10 @@ import HomePage from './pages/HomePage';
 import LogInPage from './pages/LogInPage';
 import SignUpPage from './pages/SignUpPage';
 import {Toaster} from 'react-hot-toast'
+import DashBoard from './pages/DashBoard';
+import Expense from './pages/AddExpense';
+import ExpenseOverview from './components/ExpenseOverview';
+import ExpenseData from './components/ExpenseData';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +22,24 @@ const router = createBrowserRouter([
   {
     path:'/user/login',
     element:<LogInPage/>
+  },
+  {
+    path:'/dashboard',
+    element:<DashBoard/>,
+    children:[
+      {
+        index:'/',
+        element:<ExpenseOverview/>
+      },
+      {
+        path:'expense',
+        element:<ExpenseData/>
+      },
+      {
+        path:'expense/addExpense',
+        element:<Expense/>
+      }
+    ]
   }
 ])
 

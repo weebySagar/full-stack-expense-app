@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
-import {  Link } from 'react-router-dom';
+import {  Link,useNavigate } from 'react-router-dom';
 
 import {loginUser} from '../services/user-api'
 
 const LogInForm = () => {
+    const navigate = useNavigate();
     const [userData,setUserData] = useState({
         email:'',
         password:''
@@ -64,6 +65,7 @@ const LogInForm = () => {
               email:'',
               password:''
             });
+            navigate('/dashboard')
             return `Login successfully`
           },
             error:(err)=>err.toString()

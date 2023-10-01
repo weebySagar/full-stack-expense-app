@@ -1,0 +1,26 @@
+@import "../theme-variable.scss";
+.sidebar{
+    background-color: $color-7;
+    border-radius: 8px;
+
+    .sidebar-item{
+        padding: 16px 0px;
+
+        &:hover{
+            color: $color-6;
+        }
+
+        &#active{
+            color: $color-6;
+            border-left: 3px solid $color-6; 
+        }
+        .sidebar-icon{
+            
+            svg{
+                height: 20px;
+                width: 20px;
+            }
+        }
+        
+    }
+}

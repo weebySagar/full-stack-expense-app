@@ -6,11 +6,12 @@ body{
 
 a{
     text-decoration: none;
+    color: $color-1;
 }
 
-button{
 
-    &.btn-primary{
+
+    .btn-primary{
         background-color: $button-primary-background-color;
         color: $button-primary-text-color;
         border-radius: $button-primary-border-radius;
@@ -19,7 +20,7 @@ button{
         border: none    ;
     }
 
-    &.btn-secondary{
+    .btn-secondary{
         background-color: $button-secondary-background-color;
         color: $button-secondary-text-color;
         border-radius: $button-secondary-border-radius;
@@ -32,7 +33,7 @@ button{
             color: $button-secondary-hover-text-color;
         }
     }
-}
+
 
 .inner-wrapper{
     padding-top: $spacing-top;
@@ -45,4 +46,9 @@ button{
 
 .subheading{
     opacity: 0.8;
+}
+
+.bg-7{
+    background-color: $color-7;
+    color: $color-1;
 }
