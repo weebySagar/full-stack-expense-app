@@ -1,5 +1,6 @@
 const User = require('../models/user-model');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const {generateToken} = require('../utils/token')
 
 exports.addUser=async(req,res)=>{
     const {name,email,password} = req.body;
@@ -21,7 +22,8 @@ exports.loginUser = async(req,res)=>{
             
             bcrypt.compare(password,user.dataValues.password,(err,result)=>{
                 if(result){
-                    res.status(200).json({message:'User login successfully'})
+                    const token = generateToken(user.dataValues.id)
+                    res.status(200).json({message:'User login successfully',token:token})
                 }
                 else{
                     res.status(401).json({error:'User not authorized'})

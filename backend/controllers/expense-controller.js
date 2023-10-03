@@ -2,9 +2,16 @@ const Expense = require('../models/expense-model');
 
 exports.addExpense=async(req,res)=>{
     try {
-        
-        await Expense.create({...req.body});
-        res.status(201).send('Expense added successfully')
+        console.log(req.user);
+        const userId = req.user.id;
+        const expenseData = {...req.body,userId}
+        const expense =await Expense.create(expenseData);
+        if(expense){
+
+            res.status(201).send('Expense added successfully')
+        }else{
+            res.status(400).send('Expense cannot added')
+        }
     } catch (error) {
         res.status(400).send(error.errors[0].message)
     }
@@ -12,7 +19,7 @@ exports.addExpense=async(req,res)=>{
 
 exports.getAllExpenses = async(req,res)=>{
     try {
-        const response =await Expense.findAll();
+        const response =await Expense.findAll({where:{userId:req.user.id}});
         res.status(200).send(response);
     } catch (error) {
         res.status(400).send(error.errors[0].message)
