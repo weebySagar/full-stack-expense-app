@@ -1,0 +1,39 @@
+@import "../theme-variable.scss";
+
+.premium-user{
+
+    .img-container{
+        display: inline-block;
+        padding: 10px; /* Adjust the spacing as needed */
+        background-color: #f0f0f0; /* Background color for spacing */
+        border-radius: 50%; /* Make the container round */
+        border: 2px solid #000; /* Border around the container */
+        overflow: hidden;
+    }
+    .premium-img{
+        background-color: #8f65fa;
+        padding: 20px;
+        border-radius: 50%;
+        position: relative;
+
+        &::after{
+            top: -10px;
+            left: -10px;
+            content: '';
+            position: absolute;
+            width: calc(100% + 20px);
+            height:calc(100% + 20px);
+            border:5px solid #af68cc;
+            border-radius: 50%;
+            
+
+        }
+        
+        
+
+        svg{
+            height: 24px;
+            width: 24px;
+        }
+    }
+}
