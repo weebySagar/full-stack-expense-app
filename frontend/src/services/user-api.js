@@ -23,3 +23,19 @@ export const loginUser = async(userData)=>{
         throw error.response.data.error
     }
 }
+
+export const getUserDetails = async()=>{
+    try {
+        const {data} = await axios.get(baseUrl,{
+            headers:{
+                Authorization:localStorage.getItem('token')
+            }
+        });
+        if(!data){
+            return
+        }
+        return data
+    } catch (error) {
+        throw error.response.data.error
+    }
+}

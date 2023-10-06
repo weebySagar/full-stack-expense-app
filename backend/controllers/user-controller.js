@@ -38,3 +38,12 @@ exports.loginUser = async(req,res)=>{
         res.status(500).json({error:'Internal server error'})
     }
 }
+
+exports.getUserDetails = async(req,res)=>{
+    try {
+        const user = await User.findByPk(req.user.id,{attributes:{exclude:["password"]}})
+        await res.send(user)
+    } catch (error) {
+        res.status(500).send('Internal Server Error');
+    }
+}

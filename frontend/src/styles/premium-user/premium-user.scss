@@ -2,6 +2,11 @@
 
 .premium-user{
 
+    button{
+        background-color: transparent;
+        border: none;
+        color: $color-1;
+    }
     .img-container{
         display: inline-block;
         padding: 10px; /* Adjust the spacing as needed */
@@ -27,6 +32,20 @@
             border-radius: 50%;
             
 
+        }
+
+        &.premium{
+            background-color: #ffc149;
+
+            &::after{
+                border-color: #ba802d
+            }
+
+            svg{
+                height: 36px;
+                width: 30px;
+                
+            }
         }
         
         
