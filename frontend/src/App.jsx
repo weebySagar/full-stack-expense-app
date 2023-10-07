@@ -9,6 +9,7 @@ import DashBoard from './pages/DashBoard';
 import Expense from './pages/AddExpense';
 import ExpenseOverview from './components/ExpenseOverview';
 import ExpenseData from './components/ExpenseData';
+import Leaderboard from './components/Leaderboard';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path:'expense/addExpense',
         element:<Expense/>
+      },
+      {
+        path:'leaderboard',
+        element:<Leaderboard/>
       }
     ]
   }

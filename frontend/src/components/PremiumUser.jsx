@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { createPaymentOrder } from "../services/payment-api";
 
 const PremiumUser = ({ isPremiumUser }) => {
-  console.log(isPremiumUser);
+
   return (
     <div className="premium-user bg-7 text-center rounded">
       <div className="inner-wrapper">

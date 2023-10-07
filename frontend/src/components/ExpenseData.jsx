@@ -20,18 +20,18 @@ const ExpenseData = () => {
 
   if (expenseData.length == 0) {
     return (
-      <div className="expense-data mt-4">
+      <div className="expense-data">
         <div className="title">
           <h4>Expenses</h4>
         </div>
         <div className="inner-wrapper">
 
 
-          <div class="card text-center  mb-3 bg-7" >
-            <div class="card-body">
-              <h5 class="card-title">No Expenses</h5>
-              <p class="card-text subheading">Click below button to add some expenses</p>
-              <Link class="btn-secondary" to="/dashboard/expense/addExpense">Add Expense</Link>
+          <div className="card text-center  mb-3 bg-7" >
+            <div className="card-body">
+              <h5 className="card-title">No Expenses</h5>
+              <p className="card-text subheading">Click below button to add some expenses</p>
+              <Link className="btn-secondary" to="/dashboard/expense/addExpense">Add Expense</Link>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ const ExpenseData = () => {
     )
   }
   return (
-    <div className='expense-data mt-4'>
+    <div className='expense-data'>
       <div className="title d-flex justify-content-between">
         <h4>Expenses</h4>
         <Link to='/dashboard/expense/addExpense' className='btn-secondary'>Add Expense</Link>

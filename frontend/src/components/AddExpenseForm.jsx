@@ -80,9 +80,6 @@ const AddExpenseForm = () => {
         e.preventDefault();
         if(validateForm()){
           const updatedDate = expenseData.date.split('T')[0];
-          // expenseData.date = updatedDate;
-          
-          console.log(expenseData);
             const data =addExpense({...expenseData,date:updatedDate});
           
           toast.promise(data,{

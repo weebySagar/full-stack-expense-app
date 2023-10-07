@@ -7,6 +7,8 @@ const db = require('./db/database')
 const userRoutes = require('./routes/user-routes');
 const expenseRoutes = require('./routes/expense-route');
 const paymentRoutes = require('./routes/payment-route');
+const premiumRoutes = require('./routes/premium-route')
+
 const User = require('./models/user-model');
 const Expense = require('./models/expense-model');
 
@@ -18,7 +20,8 @@ app.use(express.json())
 
 
 app.use('/user',userRoutes,paymentRoutes);
-app.use('/expense',expenseRoutes)
+app.use('/expense',expenseRoutes);
+app.use('/premium',premiumRoutes);
 
 
 User.hasMany(Expense);
