@@ -30,7 +30,11 @@ export const getAllExpenses = async(setData)=>{
 
 export const deleteExpense = async(id)=>{
     try {
-       const {data} = await axios.delete(baseUrl+'/'+id);
+       const {data} = await axios.delete(baseUrl+'/'+id,{
+        headers:{
+            Authorization:localStorage.getItem('token')
+        }
+       });
        console.log(data);
     } catch (error) {
         throw error.response.data

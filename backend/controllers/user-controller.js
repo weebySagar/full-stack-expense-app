@@ -1,14 +1,21 @@
 const User = require('../models/user-model');
 const bcrypt = require('bcrypt');
 const {generateToken} = require('../utils/token')
+const sequelize = require('../db/database');
 
 exports.addUser=async(req,res)=>{
     const {name,email,password} = req.body;
+    const t = await sequelize.transaction();
     try {
         const hashedPassword =await bcrypt.hash(password,10)
-       const response = await User.create({name,email,password:hashedPassword});
-       await res.status(201).json(response)
+       const response = await User.create({name,email,password:hashedPassword},{transaction:t});
+
+       if(response){
+            await t.commit()
+            res.status(201).json(response)
+       }
     } catch (error) {
+        await t.rollback()
         res.status(400).json({error:error.errors[0].message})
     }
 }
