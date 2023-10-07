@@ -24,8 +24,8 @@ app.use('/expense',expenseRoutes);
 app.use('/premium',premiumRoutes);
 
 
-User.hasMany(Expense);
 Expense.belongsTo(User);
+User.hasMany(Expense);
 db.sync().then(()=>
 app.listen(3000)
 )

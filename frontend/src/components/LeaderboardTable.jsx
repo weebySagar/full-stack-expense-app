@@ -16,9 +16,9 @@ const LeaderboardTable = ({leaderboardData}) => {
         </thead>
         <tbody>
           {
-            leaderboardData.map((item,index)=><tr>
+            leaderboardData.map((item,index)=><tr key={item.id}>
               <td>{index+1}</td>
-              <td>{item.user.name}</td>
+              <td>{item.name}</td>
               <td>{item.totalExpense}</td>
             </tr>)
           }
