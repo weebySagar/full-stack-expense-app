@@ -28,6 +28,12 @@ const User = db.define('user',{
         type:Sequelize.BOOLEAN,
         allowNull:true,
         defaultValue:false
+    },
+    totalExpense:
+    {
+        type:Sequelize.INTEGER,
+        allowNull:true,
+        defaultValue:0
     }
 })
 

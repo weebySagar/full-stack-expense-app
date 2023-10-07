@@ -1,5 +1,6 @@
 const  Sequelize = require('sequelize');
 const db = require('../db/database');
+const User = require('./user-model');
 
 
 const Expense = db.define('expense',{
@@ -36,4 +37,12 @@ const Expense = db.define('expense',{
     }
 });
 
+
+Expense.afterCreate((expense,options)=>{
+    const userId = expense.dataValues.userId;
+    User.findByPk(userId).then((user)=>{
+        const newTotalValues = +user.dataValues.totalExpense + +expense.dataValues.amount;
+        user.update({totalExpense:newTotalValues})
+    });
+})
 module.exports = Expense

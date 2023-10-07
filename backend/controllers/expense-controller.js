@@ -1,11 +1,20 @@
 const Expense = require('../models/expense-model');
+const User = require('../models/user-model');
 
 exports.addExpense=async(req,res)=>{
     try {
-        console.log(req.user);
         const userId = req.user.id;
         const expenseData = {...req.body,userId}
         const expense =await Expense.create(expenseData);
+
+        // User.update({totalExpense:})
+    //    const updatedTotalExpense = await Expense.afterCreate(async(expense,options)=>{
+    //         const userId = expense.dataValues.userId;
+    //        const user =await User.findByPk(userId);
+    //        const newTotalExpense = user.dataValues.totalExpense + expense.dataValues.amount;
+    //        return user.update({totalExpense:newTotalExpense},options);
+    //     })
+    //     console.log(updatedTotalExpense);
         if(expense){
 
             res.status(201).send('Expense added successfully')
