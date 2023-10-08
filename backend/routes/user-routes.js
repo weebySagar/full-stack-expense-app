@@ -11,5 +11,7 @@ router.post('/login',userController.loginUser);
 
 router.get('/',authenticate,userController.getUserDetails)
 
+router.post('/password/forgotpassword',userController.sendForgotPasswordMail);
+
 
 module.exports = router;
