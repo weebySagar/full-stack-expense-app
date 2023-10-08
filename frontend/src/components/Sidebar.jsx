@@ -49,7 +49,7 @@ const Sidebar = () => {
     
 
   return (
-    <div className='sidebar py-4 text-center'>
+    <div className='sidebar py-4 text-center h-100'>
         <div className="app-logo">
             <h3>Track Wise</h3>
         </div>

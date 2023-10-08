@@ -65,7 +65,7 @@ const LogInForm = () => {
               email:'',
               password:''
             });
-            navigate('/dashboard')
+            navigate('/dashboard',{replace:true})
             return `Login successfully`
           },
             error:(err)=>err.toString()

@@ -20,13 +20,13 @@ const LogInPage = () => {
                                 <div className="text-content">
                                     <div className="subheading">
                                         <p>
-                                            START FOR FREE
+                                            ALREADY HAVE AN ACCOUNT
                                         </p>
                                     </div>
                                     <div className="heading">
                                         <h1>
 
-                                            Create new account
+                                           Log In
                                         </h1>
                                     </div>
                                 </div>

@@ -1,0 +1,25 @@
+@import "../theme-variable.scss";
+
+.profile{
+    border-radius: 8px;
+
+    .img-container{
+        display: inline-block;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .edit-links{
+
+        .icon{
+            border-radius: 8px;
+            padding: 4px 8px;
+            background-color: $color-6;
+
+            svg{
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+}

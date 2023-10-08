@@ -20,7 +20,7 @@ const ExpenseData = () => {
 
   if (expenseData.length == 0) {
     return (
-      <div className="expense-data">
+      <div className="expense-data h-100">
         <div className="title">
           <h4>Expenses</h4>
         </div>
@@ -39,7 +39,7 @@ const ExpenseData = () => {
     )
   }
   return (
-    <div className='expense-data'>
+    <div className='expense-data h-100'>
       <div className="title d-flex justify-content-between">
         <h4>Expenses</h4>
         <Link to='/dashboard/expense/addExpense' className='btn-secondary'>Add Expense</Link>

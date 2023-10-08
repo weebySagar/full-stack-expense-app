@@ -42,7 +42,7 @@ const PremiumUser = ({ isPremiumUser }) => {
                 </div>
                 <div className="text-content mt-4">
                   <div className="heading">
-                    <h4>Upgrade to Pro</h4>
+                    <h5>Upgrade to Pro</h5>
                   </div>
                   <div className="subheading">
                     <p>

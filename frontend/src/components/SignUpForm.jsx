@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {  useNavigate } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import {addUser} from '../services/user-api'
@@ -76,6 +76,7 @@ const SignUpForm = () => {
               email:'',
               password:''
             });
+            navigate('/user/login')
             return `User created successfully`
           },
             error:(err)=>err.toString()
@@ -112,7 +113,7 @@ const SignUpForm = () => {
                     {errors.password && <p className='text-danger'>{errors.password}</p>}
                 
                 <button type="submit" className="btn btn-primary mb-4">Create Account</button>
-                <p>Already a Member ? <span style={{color:"#27c9d8"}} onClick={()=>navigate("/user/login")}>Log In</span></p>
+                <p>Already a Member ? <Link style={{color:"#27c9d8"}} to={"/user/login"}>Log In</Link></p>
                 
             </form>
             </div>

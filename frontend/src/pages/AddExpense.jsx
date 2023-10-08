@@ -4,8 +4,8 @@ import "../styles/add-expense/add-expense.scss"
 
 const AddExpense = () => {
   return (
-    <div className='expense'>
-        <div className="expense-form">
+    <div className='add-expense h-100'>
+        <div className="expense-form h-100">
             <div className="title mt-2">
               <h3>Add Expense</h3>
             </div>
