@@ -17,7 +17,7 @@ const sender = {
 
 
 
-exports.sendForgotPasswordMail =async(email)=>{
+exports.sendForgotPasswordMail =async(email,uuid)=>{
     const recievers = [
         {
             email : email
@@ -28,6 +28,6 @@ exports.sendForgotPasswordMail =async(email)=>{
     to: recievers,
     subject : 'Reset Password Link',
     textContent : 'forgot your password ? dont worry click here on this',
-    htmlContent: htmlContent
+    htmlContent: htmlContent(uuid)
 })
 }

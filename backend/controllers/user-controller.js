@@ -2,7 +2,6 @@ const User = require('../models/user-model');
 const bcrypt = require('bcrypt');
 const {generateToken} = require('../utils/token')
 const sequelize = require('../db/database');
-const { sendForgotPasswordMail } = require('../utils/mail-config');
 
 exports.addUser=async(req,res)=>{
     const {name,email,password} = req.body;
@@ -53,22 +52,5 @@ exports.getUserDetails = async(req,res)=>{
         await res.send(user)
     } catch (error) {
         res.status(500).send('Internal Server Error');
-    }
-}
-
-exports.sendForgotPasswordMail = async(req,res)=>{
-    
-    try {
-        const {email} = req.body;
-        const {messageId} = await sendForgotPasswordMail(email);
-        if(messageId){
-            res.status(200).send('Please check your email to reset your password')
-        }
-        else{
-            res.status(500).send('Something went wrong')
-        }
-    } catch (error) {
-        res.status(500).send('Internal server error')
-        
     }
 }

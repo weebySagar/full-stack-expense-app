@@ -91,8 +91,9 @@ const LogInForm = () => {
                 {errors.password && <p className='text-danger'>{errors.password}</p>}
 
                 
-                <button type="submit" className="btn btn-primary mb-4">Log In</button>
+                <button type="submit" className="btn btn-primary my-4">Log In</button>
                 <p>Don't have an account ? <Link style={{color:"#27c9d8"}} to="/user/signup">Create Account</Link></p>
+                <p><Link to='/password/forgotpassword' style={{color:"#27c9d8"}}>Forgot Password ?</Link></p>
                 
             </form>
             </div>

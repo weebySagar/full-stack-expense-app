@@ -10,6 +10,7 @@ import Expense from './pages/AddExpense';
 import ExpenseOverview from './components/ExpenseOverview';
 import ExpenseData from './components/ExpenseData';
 import Leaderboard from './components/Leaderboard';
+import ForgotPassword from './pages/ForgotPassword';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path:'/user/login',
     element:<LogInPage/>
+  },
+  {
+    path:'/password/forgotpassword',
+    element:<ForgotPassword/>
   },
   {
     path:'/dashboard',
