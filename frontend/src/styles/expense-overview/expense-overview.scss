@@ -1,38 +1,74 @@
 @import "../theme-variable.scss";
 
-.expense-overview{
-
-
-    .expense-header{
-
-        .expense-search{
-            background-color: $color-7;
-            padding:  20px;
-            border-radius: 15px;
-        }
-        input{
-            width: 100%;
-            background-color: $color-7;
-            outline: none;
-            border: none;
-            color: $color-1;
-        }
-
-        a{
-            background-color: $color-7;
-            color: $color-1;
-            height: 100%;
-            display: block;
-            border-radius: 15px;
-            padding: 20px;
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-
-            svg{
-                height: 24px;
-                width: 24px;
-            }
-        }
+.expense-overview {
+  .expense-header {
+    .expense-search {
+      background-color: $color-7;
+      padding: 20px;
+      border-radius: 15px;
     }
+    input {
+      width: 100%;
+      background-color: $color-7;
+      outline: none;
+      border: none;
+      color: $color-1;
+    }
+
+    a {
+      background-color: $color-7;
+      color: $color-1;
+      height: 100%;
+      display: block;
+      border-radius: 15px;
+      padding: 20px;
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+
+      svg {
+        height: 24px;
+        width: 24px;
+      }
+    }
+  }
+
+  .expense-overview-container {
+    .expense-container-item{
+        border-radius: 18px;
+        position: relative;
+
+        &:hover {
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: rgba(0, 0, 0, 0.2); /* Change overlay color and opacity as needed */
+            }
+          }
+    }
+    .col {
+        &:first-child,&:last-child {
+            .expense-container-item{
+
+                background-color: $color-3; // Background color for second item
+            }
+          }
+          &:nth-child(2){
+            .expense-container-item{
+
+                background-color: $color-2;
+            }
+          }
+    //   &:first-child,
+    //   &:last-child {
+    //     background-color: #ffc0cb; // Background color for first and third items
+    //   }
+
+    
+    }
+  }
 }

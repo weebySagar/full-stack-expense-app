@@ -45,7 +45,14 @@ const ExpenseData = () => {
         <Link to='/dashboard/expense/addExpense' className='btn-secondary'>Add Expense</Link>
       </div>
       <div className="expense-table content-wrapper">
+      <select class="form-select" aria-label="Default select example">
+            <option selected value="">Date</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
         <table>
+          
           <thead>
             <th>Description</th>
             <th>Category</th>

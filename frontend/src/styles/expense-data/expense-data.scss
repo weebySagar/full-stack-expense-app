@@ -10,6 +10,12 @@
     }
 
     .expense-table{
+        select{
+            background-color: $color-7;
+            color: $color-1;
+            width: auto;
+            border-color: #ccc;
+        }
         table{
             width: 100%;
         }
