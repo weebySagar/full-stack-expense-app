@@ -13,12 +13,40 @@
 
         .icon{
             border-radius: 8px;
-            padding: 4px 8px;
+            padding: 4px 6px;
             background-color: $color-6;
+            cursor: pointer;
 
             svg{
                 height: 20px;
                 width: 20px;
+            }
+        }
+    }
+
+    .edit-profile{
+        background-color: $color-5;
+        padding:20px ;
+        border-radius: 8px;
+        .input{
+        
+            margin-bottom: 14px;
+            label{
+                display: block;
+                text-align: left;
+            }
+
+            input{
+                background-color: $color-5;
+                color: #ccc;
+                border: none;
+                display: block;
+                width: 100%;
+
+                &:focus,&:active{
+                    outline: none;
+                    border-bottom: 1px solid $color-1 !important;
+                }
             }
         }
     }

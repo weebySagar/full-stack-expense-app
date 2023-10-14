@@ -11,7 +11,7 @@ router.post('/login',userController.loginUser);
 
 router.get('/',authenticate,userController.getUserDetails)
 
-
+router.put('/update',authenticate,userController.updateUserDetails)
 
 
 module.exports = router;

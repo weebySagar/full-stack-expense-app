@@ -39,3 +39,18 @@ export const getUserDetails = async()=>{
         throw error.response.data.error
     }
 }
+
+export const updateUserDetails = async(userData)=>{
+    try {
+        const {data} = await axios.put(baseUrl+'/update',userData,{
+            headers:{
+                Authorization:localStorage.getItem('token')
+            }
+        });
+        console.log(data);
+        return data
+    } catch (error) {
+        console.log(error);
+        throw error.response.data
+    }
+}

@@ -22,8 +22,12 @@ const DashBoard = () => {
             
 
         <div className="row h-100 row-gap-4">
-            <div className="col-2" style={{height:'70%'}}>
+            <div className="col-2 d-flex flex-column justify-content-between" >
+                
+
                 <Sidebar/>
+                <PremiumUser isPremiumUser={user?.premiumUser}/>
+                
             </div>
             <div className="col-8">
                 <Outlet/>
@@ -32,16 +36,6 @@ const DashBoard = () => {
             <div className="col-2">
                 <Profile user={user}/>
             </div>
-        {/* </div> */}
-        {/* <div className="row mt-5"> */}
-            <div className="col-2">
-                <PremiumUser isPremiumUser={user?.premiumUser}/>
-            </div>
-            <div className="col-8">
-               
-                
-            </div>
-            
         </div>
     </div>
    </section>

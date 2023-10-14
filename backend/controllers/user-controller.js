@@ -54,3 +54,25 @@ exports.getUserDetails = async(req,res)=>{
         res.status(500).send('Internal Server Error');
     }
 }
+
+exports.updateUserDetails = async(req,res)=>{
+try {
+    console.log(req.body);
+    const {name,password} = req.body;
+    console.log(name,password);
+    if(password){
+
+        const hashedPassword =await bcrypt.hash(password,10)
+       await User.update({password:hashedPassword},{where:{id:req.user.id}})
+    }
+    if(name){
+        await User.update({name},{where:{id:req.user.id}})
+    }
+   
+        res.status(200).send('User updated successfully')
+
+} catch (error) {
+    console.log(error);
+    res.status(500).send('Internal server error')
+}
+}
