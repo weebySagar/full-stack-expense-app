@@ -1,12 +1,14 @@
 import React from 'react';
 import "../styles/expense-data/expense-data.scss";
-import { getAllExpenses, deleteExpense, getExpensesByWeekly ,getExpensesByMonthly} from "../services/expense-api"
+import { getAllExpenses, deleteExpense, getExpensesByWeekly ,getExpensesByMonthly} from "../services/expense-api";
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, redirect } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { downloadFile } from '../services/user-api';
 
 const ExpenseData = () => {
+  const {user} =useOutletContext()
   const [expenseData, setExpenseData] = useState({
     expenses: [],
     totalExpense: 0
@@ -19,6 +21,7 @@ const ExpenseData = () => {
       const expenseByWeekly = getExpensesByWeekly();
       toast.promise(expenseByWeekly,{
         success:(data)=>{
+          // console.log(data);
           setExpenseData({ expenses: data.expensesThisWeek, totalExpense: data.totalExpenseThisWeek[0].totalExpense });
           return 'Weekly Data'
         },
@@ -52,7 +55,20 @@ const ExpenseData = () => {
     deleteExpense(id).then(() => setExpenseData(prevExpense => prevExpense.filter(expense => expense.id !== id)))
   }
 
-  if (expenseData.length == 0) {
+  const handleDownload =()=>{
+    const fileUrl = downloadFile(expenseTime);
+    toast.promise(fileUrl,{
+      success:(file)=>{
+        window.location.href=file
+        return 'Successfully downloaded file'
+      },
+      error:(err)=>err
+    })
+  }
+
+  // console.log(expenseData.expenses);
+
+  if (expenseData.expenses.length == 0) {
     return (
       <div className="expense-data h-100">
         <div className="title">
@@ -78,13 +94,31 @@ const ExpenseData = () => {
         <h4>Expenses</h4>
         <Link to='/dashboard/expense/addExpense' className='btn-secondary'>Add Expense</Link>
       </div>
-      <div className="expense-table content-wrapper">
+      {
+        user.premiumUser && 
+        <div className="d-flex justify-content-between content-wrapper align-items-center">
+
+        <div className="menu  d-flex">
+        <div className="select-menu">
         <select className="form-select" aria-label="Default select example" onChange={handleSelectChange} value={expenseTime}>
           <option selected value="">Select </option>
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
           <option value="monthly">Monthly</option>
         </select>
+        </div>
+        <div className="download-btn mx-4">
+          <button className='btn-secondary' onClick={handleDownload}>Download File</button>
+        </div>
+      </div>
+      <div className="downloaded-files-btn">
+        <Link to='downloadedfiles' className='btn-secondary'>Downloaded Files</Link>
+      </div>
+        </div>
+      }
+      
+      <div className="expense-table content-wrapper">
+      
         <table className='position-relative'>
 
           <thead>
@@ -116,7 +150,7 @@ const ExpenseData = () => {
               <td>
                 <h5>
 
-                {expenseData.totalExpense}
+                ₹ {expenseData.totalExpense}
                 </h5>
                 </td>
             </tr>

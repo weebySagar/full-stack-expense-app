@@ -30,7 +30,7 @@ const DashBoard = () => {
                 
             </div>
             <div className="col-8">
-                <Outlet/>
+                <Outlet context={{user}}/>
                 
             </div>
             <div className="col-2">

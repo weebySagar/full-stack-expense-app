@@ -10,7 +10,8 @@ try {
     const user = await User.findByPk(userId);
    
     if(!user){
-        res.status(404).send('User not found')
+        res.status(404).send('User not found');
+        // res.redirect('/')
     }
     req.user =user;
     next();

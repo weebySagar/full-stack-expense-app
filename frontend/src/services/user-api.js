@@ -45,12 +45,41 @@ export const updateUserDetails = async(userData)=>{
         const {data} = await axios.put(baseUrl+'/update',userData,{
             headers:{
                 Authorization:localStorage.getItem('token')
+
             }
         });
         console.log(data);
         return data
     } catch (error) {
         console.log(error);
+        throw error.response.data
+    }
+}
+
+export const downloadFile = async(type)=>{
+    try {
+        const {data} = await axios.get(`${baseUrl}/download/${type}`,
+        {
+            headers:{
+                Authorization:localStorage.getItem('token')
+            }
+        }
+        );
+       return data
+    } catch (error) {
+        throw error.response.data
+    }
+}
+
+export const getAllDownloadedFiles = async ()=>{
+    try {
+        const {data} = await axios.get(baseUrl+'/getdownloadedfiles',{
+            headers:{
+                Authorization:localStorage.getItem('token')
+            }
+        });
+        return data
+    } catch (error) {
         throw error.response.data
     }
 }

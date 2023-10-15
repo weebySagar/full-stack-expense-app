@@ -49,7 +49,9 @@ export const getExpensesByWeekly = async ()=>{
                 Authorization:localStorage.getItem('token')
             }
         });
-        return data
+        // if(data.expenseThisWeek.length>0){
+            return data
+        // }
     } catch (error) {
         throw error.response.data
     }

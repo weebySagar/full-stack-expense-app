@@ -1,7 +1,7 @@
 @import "../theme-variable.scss";
-.leaderboard{
+.leaderboard,.downloaded-files{
 
-    .leaderboard-table{
+    .leaderboard-table,.files-table{
         table{
             td,th{
                 background-color: transparent !important;

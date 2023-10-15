@@ -2,6 +2,9 @@ const User = require('../models/user-model');
 const bcrypt = require('bcrypt');
 const {generateToken} = require('../utils/token')
 const sequelize = require('../db/database');
+const { getWeeklyExpenseData, getMonthlyExpenseData } = require('./expense-controller');
+const { uploadToS3 } = require('../utils/aws-s3');
+const DownloadedFile = require('../models/downloaded-file-model');
 
 exports.addUser=async(req,res)=>{
     const {name,email,password} = req.body;
@@ -57,9 +60,7 @@ exports.getUserDetails = async(req,res)=>{
 
 exports.updateUserDetails = async(req,res)=>{
 try {
-    console.log(req.body);
     const {name,password} = req.body;
-    console.log(name,password);
     if(password){
 
         const hashedPassword =await bcrypt.hash(password,10)
@@ -72,7 +73,67 @@ try {
         res.status(200).send('User updated successfully')
 
 } catch (error) {
-    console.log(error);
     res.status(500).send('Internal server error')
 }
+}
+
+exports.getDownloadFile= async(req,res)=>{
+    try {
+        const {type} = req.params
+        console.log(type);
+        if(type=='weekly'){
+            const data = await getWeeklyExpenseData(req,res,type);
+            const stringifiedData = JSON.stringify(data);
+
+
+            const fileName = `Expense${req.user.id}/${new Date()}.txt`;
+            const fileUrl = await uploadToS3(stringifiedData,fileName)
+            if(fileUrl){
+                const savedFile = await DownloadedFile.create({fileUrl,userId:req.user.id});
+                if(savedFile){
+                    res.status(200).send(fileUrl)
+                }
+                else{
+                    res.satus(400).send('Something went wrong')
+                }
+            }
+            else{
+                res.status(400).send('Cannot download file')
+            }
+        }
+        else if(type == 'monthly'){
+            const data = await getMonthlyExpenseData(req,res,type);
+            const stringifiedData = JSON.stringify(data);
+
+
+            const fileName = `Expense${req.user.id}/${new Date()}.txt`;
+            const fileUrl = await uploadToS3(stringifiedData,fileName)
+            if(fileUrl){
+                const savedFile= await DownloadedFile.create({fileUrl,userId:req.user.id});
+                if(savedFile){
+                    res.status(200).send(fileUrl)
+                }
+                else{
+                    res.status(400).send('Something went wrong')
+                }
+            }
+            else{
+                res.status(400).send('Cannot download file')
+            }
+        }
+    } catch (error) {
+        res.status(500).send('Internal server error')
+    }
+}
+
+
+exports.getAllDownloadedFiles=async(req,res)=>{
+    try {
+        const filesData = await DownloadedFile.findAll({where:{userId:req.user.id},order:[['createdAt','DESC']]});
+        if(filesData){
+            res.status(200).send(filesData)
+        }
+    } catch (error) {
+        res.status(500).send('Internal server error')       
+    }
 }

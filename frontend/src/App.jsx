@@ -11,6 +11,7 @@ import ExpenseOverview from './components/ExpenseOverview';
 import ExpenseData from './components/ExpenseData';
 import Leaderboard from './components/Leaderboard';
 import ForgotPassword from './pages/ForgotPassword';
+import DownloadedFiles from './components/DownloadedFiles';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path:'expense/addExpense',
         element:<Expense/>
+      },
+      {
+        path:'expense/downloadedfiles',
+        element:<DownloadedFiles/>
       },
       {
         path:'leaderboard',

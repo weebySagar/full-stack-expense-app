@@ -9,13 +9,22 @@
         border: none;
     }
 
-    .expense-table{
+    .menu{
         select{
             background-color: $color-7;
             color: $color-1;
             width: auto;
             border-color: #ccc;
         }
+        button{
+            background-color: $color-3;
+            color: $color-1;
+            border: none;
+        }
+    }
+
+    .expense-table{
+        
         table{
             width: 100%;
             overflow-y: scroll;

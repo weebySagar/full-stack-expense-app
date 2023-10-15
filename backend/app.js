@@ -13,7 +13,8 @@ const passwordRoutes = require('./routes/password-route')
 
 const User = require("./models/user-model");
 const Expense = require("./models/expense-model");
-const FPG = require('./models/forgot-password-model')
+const FPG = require('./models/forgot-password-model');
+const DownloadedFile = require('./models/downloaded-file-model');
 
 dotenv.config();
 app.use(cors());
@@ -29,6 +30,7 @@ app.use('/password',passwordRoutes)
 Expense.belongsTo(User);
 User.hasMany(Expense);
 User.hasMany(FPG);
+User.hasMany(DownloadedFile)
 db.sync().then(() => {
   app.listen(3000);
 });

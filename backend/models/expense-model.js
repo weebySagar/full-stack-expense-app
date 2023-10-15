@@ -47,15 +47,11 @@ Expense.afterCreate((expense,options)=>{
 });
 
 Expense.afterDestroy(async (expense, options) => {
-    console.log('Hook triggered for expense ID:', expense.id);
     try {
       const user = await User.findByPk(expense.userId);
-      console.log('Found user:', user);
       if (user) {
         const newTotalExpense = user.totalExpense - expense.amount;
-        console.log('New totalExpense:', newTotalExpense);
         await user.update({ totalExpense: newTotalExpense }, options);
-        console.log('User updated successfully');
       }
     } catch (error) {
       console.error('Error updating totalExpense after deleting expense:', error);
