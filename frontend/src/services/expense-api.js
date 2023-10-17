@@ -15,9 +15,9 @@ export const addExpense = async(expenseData)=>{
     }
 }
 
-export const getAllExpenses = async()=>{
+export const getAllExpenses = async(page)=>{
     try {
-        const {data} = await axios.get(baseUrl+'/getAllExpenses',{
+        const {data} = await axios.get(baseUrl+'/getAllExpenses?page='+page,{
             headers:{
                 'Authorization':localStorage.getItem('token')
             }

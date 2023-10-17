@@ -4,6 +4,7 @@
     background-color: $color-7;
     padding:  20px;
     border-radius: 15px;
+    position: relative;
 
     .card{
         border: none;
@@ -36,6 +37,31 @@
             padding: 10px;
             color:#ccc;
             // text-align: center;
+        }
+    }
+
+    .expense-pagination{
+        position: absolute;
+        bottom: 10%;
+        .page-item{
+            &.active{
+                .page-link{
+                    background-color: $color-6;
+                    box-shadow: none;
+                    border-color: $color-6;
+                }
+            }
+
+            &.disabled{
+                .page-link{
+                    background-color: $color-5;
+                    color: #ccc;
+                }
+            }
+        }
+        .page-link{
+            background-color: transparent;
+            color: $color-1;
         }
     }
 }

@@ -25,8 +25,13 @@ exports.addExpense = async (req, res) => {
 
 exports.getAllExpenses = async (req, res) => {
     try {
-        const response = await Expense.findAll({ where: { userId: req.user.id },order:[['date','DESC']],limit:10 });
-        res.status(200).send(response);
+        const {page} = req.query || 1;
+        const limit = 10;
+        const offset = (page - 1) * limit;
+        const expenseCount = await Expense.count({where:{userId:req.user.id}});
+        const totalPages = Math.ceil(expenseCount/limit)
+        const response = await Expense.findAll({ where: { userId: req.user.id },order:[['date','DESC']],limit:limit,offset:offset });
+        res.status(200).send({expenses:response,totalPages});
     } catch (error) {
         res.status(400).send(error.errors[0].message);
     }
@@ -110,7 +115,6 @@ exports.getWeeklyExpenseData = async (req, res,type) => {
 
 exports.getMonthlyExpenseData = async (req, res,type) => {
     const user = req.user;
-    console.log(typeof type);
     const month = new Date().getMonth() + 1 > 12 ? 1 : new Date().getMonth() + 1;
     try {
         const expensesThisMonth = await Expense.findAll({
