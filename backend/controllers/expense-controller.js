@@ -31,9 +31,12 @@ exports.getAllExpenses = async (req, res) => {
         const expenseCount = await Expense.count({where:{userId:req.user.id}});
         const totalPages = Math.ceil(expenseCount/limit)
         const response = await Expense.findAll({where: { userId: req.user.id },order:[['date','DESC']],limit:limit,offset:offset });
+        const totalExpense = await Expense.sum('amount',{where:{
+            userId:req.user.id
+        }})
         if(response){
 
-            res.status(200).send({expenses:response,totalPages});
+            res.status(200).send({expenses:response,totalPages,totalExpense});
         }
         else{
             res.status(400).send('No Expenses')

@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv");
-const path = require('path')
+const path = require('path');
+const helmet = require('helmet');
+const fs = require('fs');
+const morgan = require('morgan');
 
 const db = require("./db/database");
 const userRoutes = require("./routes/user-routes");
@@ -16,8 +19,16 @@ const Expense = require("./models/expense-model");
 const FPG = require('./models/forgot-password-model');
 const DownloadedFile = require('./models/downloaded-file-model');
 
+//for logging
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname,'access log'),
+  {flags:'a'}
+)
+
 dotenv.config();
 app.use(cors());
+app.use(helmet());
+app.use(morgan('combined',{stream:accessLogStream}))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

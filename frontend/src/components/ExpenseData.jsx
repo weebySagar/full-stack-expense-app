@@ -123,6 +123,8 @@ const ExpenseData = () => {
     setLimit(e.target.value)
   }
 
+  const [isHovered,setIsHovered] = useState(null);
+
   if (expenseData.expenses.length == 0) {
     return (
       <div className="expense-data h-100">
@@ -218,8 +220,12 @@ const ExpenseData = () => {
             <th>Action</th>
           </thead>
           <tbody className="mt-4">
-            {expenseData.expenses.map((item) => (
-              <tr key={item.id}>
+            {expenseData.expenses.map((item,index) => (
+              <tr key={item.id}
+              className={index == isHovered ? "active" :""}
+              onMouseEnter={()=>setIsHovered(index)}
+              onMouseLeave={()=>setIsHovered(null)}
+              >
                 <td>{item.description}</td>
                 <td>{item.category}</td>
                 <td>₹ {item.amount}</td>

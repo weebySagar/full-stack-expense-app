@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ExpenseOverviewContainerData from './ExpenseOverviewContainerData'
+import { getAllExpenses } from '../services/expense-api'
 
 const ExpenseOverviewContainer = () => {
-    const data =[
+    const [expenseData ,setExpenseData] = useState([
         {
             title:'Total Income',
             amount:'50,000',
@@ -10,7 +11,7 @@ const ExpenseOverviewContainer = () => {
         },
         {
             title:'Total Expenses',
-            amount:'20,000',
+            amount:0,
 
         },
         {
@@ -18,13 +19,24 @@ const ExpenseOverviewContainer = () => {
             amount:'50,000',
 
         },
-    ]
-  return (
+    ])
+
+    useEffect(()=>{
+        getAllExpenses().then(data=>{
+            setExpenseData(prevData=>{
+                const updatedData = [...prevData];
+                updatedData[1] = {...updatedData[1],amount:data.totalExpense}
+                return updatedData
+            })
+            })
+    },[])
+
+    return (
     <div className='expense-overview-container'>
         <div className="inner-wrapper">
             <div className="row">
                 {   
-                    data.map(item=> <ExpenseOverviewContainerData item={item}/>)
+                    expenseData?.map(item=> <ExpenseOverviewContainerData item={item}/>)
                 }
             </div>
         </div>
