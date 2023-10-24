@@ -16,6 +16,7 @@ import Pagination from "./Pagination";
 const ExpenseData = () => {
   const { user } = useOutletContext();
   const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(10)
 
   const [expenseData, setExpenseData] = useState({
     expenses: [],
@@ -25,16 +26,17 @@ const ExpenseData = () => {
   const [expenseTime, setExpenseTime] = useState("");
 
   useEffect(() => {
-    getAllExpenses(currentPage).then((data) =>
+    getAllExpenses(currentPage,limit).then((data) =>
       setExpenseData({ expenses: data.expenses, totalPages: data.totalPages })
     );
     if (expenseTime == "weekly") {
-      const expenseByWeekly = getExpensesByWeekly();
+      const expenseByWeekly = getExpensesByWeekly(currentPage,limit);
       toast.promise(expenseByWeekly, {
         success: (data) => {
           setExpenseData({
             expenses: data.expensesThisWeek,
             totalExpense: data.totalExpenseThisWeek[0].totalExpense,
+            totalPages:data.totalPages
           });
           return "Weekly Data";
         },
@@ -45,12 +47,13 @@ const ExpenseData = () => {
       });
     }
     if (expenseTime == "monthly") {
-      const expenseByMonthly = getExpensesByMonthly();
+      const expenseByMonthly = getExpensesByMonthly(currentPage,limit);
       toast.promise(expenseByMonthly, {
         success: (data) => {
           setExpenseData({
             expenses: data.expensesThisMonth,
             totalExpense: data.totalExpenseThisMonth[0].totalExpense,
+            totalPages:data.totalPages
           });
           return "Monthly Data";
         },
@@ -60,9 +63,10 @@ const ExpenseData = () => {
         },
       });
     }
-  }, [expenseTime, currentPage]);
+  }, [expenseTime, currentPage,limit]);
 
   const handleSelectChange = (e) => {
+    setCurrentPage(1);
     setExpenseTime(e.target.value);
   };
 
@@ -104,16 +108,20 @@ const ExpenseData = () => {
     const buttons = [];
     for (let i = 1; i <= expenseData.totalPages; i++) {
       buttons.push(
-          <li className={`page-item ${i == currentPage ? "active" :""}`}>
+        <li className={`page-item ${i == currentPage ? "active" : ""}`}>
 
-        <button class="page-link" onClick={() => goToPage(i)} key={i}>
-          {i}
-        </button>
-          </li>
+          <button class="page-link" onClick={() => goToPage(i)} key={i}>
+            {i}
+          </button>
+        </li>
       );
     }
     return buttons;
   };
+
+  const handleLimit=(e)=>{
+    setLimit(e.target.value)
+  }
 
   if (expenseData.expenses.length == 0) {
     return (
@@ -148,37 +156,56 @@ const ExpenseData = () => {
           Add Expense
         </Link>
       </div>
-      {user.premiumUser && (
-        <div className="d-flex justify-content-between content-wrapper align-items-center">
-          <div className="menu  d-flex">
-            <div className="select-menu">
-              <select
-                className="form-select"
-                aria-label="Default select example"
-                onChange={handleSelectChange}
-                value={expenseTime}
+      <div className="d-flex justify-content-between content-wrapper align-items-center">
+        <div className="menu  d-flex">
+          <div className="select-row-per-page row align-items-center">
+            <div className="col-auto">
+
+            <label htmlFor="select-row">Rows Per Page:</label>
+            </div>
+            <div className="col-auto">
+            <select class="form-select" aria-label="Default select example" id="select-row" onChange={handleLimit}>
+              <option value="5">5</option>
+              <option selected value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+            </div>
+          </div>
+
+
+      { user.premiumUser &&
+      <>
+          <div className="select-menu mx-4">
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              onChange={handleSelectChange}
+              value={expenseTime}
               >
-                <option selected value="">
-                  Select{" "}
-                </option>
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
-              </select>
-            </div>
-            <div className="download-btn mx-4">
-              <button className="btn-secondary" onClick={handleDownload}>
-                Download File
-              </button>
-            </div>
+              <option value="daily" selected>Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+            </select>
           </div>
-          <div className="downloaded-files-btn">
-            <Link to="downloadedfiles" className="btn-secondary">
-              Downloaded Files
-            </Link>
+          <div className="download-btn ">
+            <button className="btn-secondary" onClick={handleDownload}>
+              Download File
+            </button>
           </div>
+              </>
+          }
         </div>
-      )}
+
+        {
+          user.premiumUser &&
+          <div className="downloaded-files-btn">
+          <Link to="downloadedfiles" className="btn-secondary">
+            Downloaded Files
+          </Link>
+        </div>}
+      
+      </div>
 
       <div className="expense-table content-wrapper">
         <table className="position-relative">
@@ -209,30 +236,30 @@ const ExpenseData = () => {
               </tr>
             ))}
             {/* <hr className='w-100 '/> */}
-            <tr className="border-top">
+            {/* <tr className="border-top">
               <td colspan="2">
                 <h5>Total Expense</h5>
               </td>
               <td>
                 <h5>₹ {expenseData.totalExpense}</h5>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
 
       {
         expenseData.totalPages > 1 &&
-      <div className="expense-pagination">
-        <Pagination
-          previousPage={previousPage}
-          nextPage={nextPage}
-          renderPagination={renderPagination}
-          currentPage={currentPage}
-          totalPages={expenseData.totalPages}
+        <div className="expense-pagination">
+          <Pagination
+            previousPage={previousPage}
+            nextPage={nextPage}
+            renderPagination={renderPagination}
+            currentPage={currentPage}
+            totalPages={expenseData.totalPages}
           />
-      </div>
-        }
+        </div>
+      }
     </div>
   );
 };

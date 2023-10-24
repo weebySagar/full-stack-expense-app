@@ -15,9 +15,9 @@ export const addExpense = async(expenseData)=>{
     }
 }
 
-export const getAllExpenses = async(page)=>{
-    try {
-        const {data} = await axios.get(baseUrl+'/getAllExpenses?page='+page,{
+export const getAllExpenses = async(page,limit)=>{
+        try {
+        const {data} = await axios.get(baseUrl+`/getAllExpenses?page=${page}&limit=${limit}`,{
             headers:{
                 'Authorization':localStorage.getItem('token')
             }
@@ -41,14 +41,15 @@ export const deleteExpense = async(id)=>{
     }
 }
 
-export const getExpensesByWeekly = async ()=>{
+export const getExpensesByWeekly = async (page,limit)=>{
     try {
-        const {data} = await axios.get(baseUrl+'/weeklydata',
+        const {data} = await axios.get(baseUrl+`/weeklydata?page=${page}&limit=${limit}`,
         {
             headers:{
                 Authorization:localStorage.getItem('token')
             }
         });
+        console.log(data);
         // if(data.expenseThisWeek.length>0){
             return data
         // }
@@ -57,9 +58,9 @@ export const getExpensesByWeekly = async ()=>{
     }
 }
 
-export const getExpensesByMonthly = async ()=>{
+export const getExpensesByMonthly = async (page,limit)=>{
     try {
-        const {data} = await axios.get(baseUrl+'/monthlydata',{
+        const {data} = await axios.get(baseUrl+`/monthlydata?page=${page}&limit=${limit}`,{
             headers:{
                 Authorization:localStorage.getItem('token')
             }

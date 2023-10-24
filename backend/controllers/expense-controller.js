@@ -25,15 +25,21 @@ exports.addExpense = async (req, res) => {
 
 exports.getAllExpenses = async (req, res) => {
     try {
-        const {page} = req.query || 1;
-        const limit = 10;
+        const page = +req.query.page || 1;
+        const limit = +req.query.limit || 10;
         const offset = (page - 1) * limit;
         const expenseCount = await Expense.count({where:{userId:req.user.id}});
         const totalPages = Math.ceil(expenseCount/limit)
-        const response = await Expense.findAll({ where: { userId: req.user.id },order:[['date','DESC']],limit:limit,offset:offset });
-        res.status(200).send({expenses:response,totalPages});
+        const response = await Expense.findAll({where: { userId: req.user.id },order:[['date','DESC']],limit:limit,offset:offset });
+        if(response){
+
+            res.status(200).send({expenses:response,totalPages});
+        }
+        else{
+            res.status(400).send('No Expenses')
+        }
     } catch (error) {
-        res.status(400).send(error.errors[0].message);
+        res.status(500).send('Internal server error');
     }
 };
 
@@ -70,6 +76,9 @@ exports.deleteExpense = async (req, res) => {
 
 exports.getWeeklyExpenseData = async (req, res,type) => {
     try {
+        const page = +req.query.page || 1;
+        const limit = +req.query.limit || 10;
+        const offset = (page - 1) * limit;
         const startOfWeek = new Date(
             new Date().getFullYear(),
             new Date().getMonth(),
@@ -78,8 +87,14 @@ exports.getWeeklyExpenseData = async (req, res,type) => {
         const endOfWeek = new Date(
             new Date().getFullYear(),
             new Date().getMonth(),
-            new Date().getDate() + (6 - new Date().getDay())
+            new Date().getDate() + (7 - new Date().getDay())
         );
+        const expenseCount = await Expense.count({where:{
+            date: {
+                [Op.between]:[startOfWeek,endOfWeek]
+            },
+            userId:req.user.id}});
+            const totalPages = Math.ceil(expenseCount/limit)
 
         const expensesThisWeek = await Expense.findAll({
             where: {
@@ -90,8 +105,11 @@ exports.getWeeklyExpenseData = async (req, res,type) => {
 
             },
             order: [["date"]],
+            limit:limit,
+            offset:offset
         });
 
+        
         const totalExpenseThisWeek = await Expense.findAll({
              attributes: [[sequelize.fn('SUM', sequelize.col('amount')), 'totalExpense']],
             where: {
@@ -102,7 +120,7 @@ exports.getWeeklyExpenseData = async (req, res,type) => {
             }
         });
         if(typeof type != "string"){
-            res.status(200).send({expensesThisWeek,totalExpenseThisWeek});
+            res.status(200).send({expensesThisWeek,totalExpenseThisWeek,totalPages});
        }
        else{
            return ({expensesThisWeek,totalExpenseThisWeek});
@@ -115,8 +133,22 @@ exports.getWeeklyExpenseData = async (req, res,type) => {
 
 exports.getMonthlyExpenseData = async (req, res,type) => {
     const user = req.user;
+    const page = +req.query.page || 1;
+    const limit = +req.query.limit || 10;
+    const offset = (page - 1) * limit;
     const month = new Date().getMonth() + 1 > 12 ? 1 : new Date().getMonth() + 1;
+    
+  const currentDate = new Date();
+  const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
     try {
+        const expenseCount = await Expense.count({where:{
+            date: {
+                [Op.between]:[firstDayOfMonth,lastDayOfMonth]
+            },
+            userId:req.user.id}});
+            const totalPages = Math.ceil(expenseCount/limit)
+
         const expensesThisMonth = await Expense.findAll({
             where: {
                 userId: user.id,
@@ -126,6 +158,8 @@ exports.getMonthlyExpenseData = async (req, res,type) => {
                 ),
             },
             order: [["date"]],
+            limit:limit,
+            offset:offset
         });
         const totalExpenseThisMonth =await Expense.findAll({
             attributes:[ [sequelize.fn('sum',sequelize.col('amount')),'totalExpense']],
@@ -136,11 +170,17 @@ exports.getMonthlyExpenseData = async (req, res,type) => {
                     sequelize.fn("month", sequelize.col("date")),
                     month
                 ),
+                date:{
+                    [Op.between]:[firstDayOfMonth,lastDayOfMonth]
+
+                }
             },
-            order: [["date"]],
+            // order: [["date"]],
+            // limit:limit,
+            // offset:offset
         });
         if(typeof type != "string"){
-             res.status(200).send({expensesThisMonth,totalExpenseThisMonth});
+             res.status(200).send({expensesThisMonth,totalExpenseThisMonth,totalPages});
         }
         else{
             return ({expensesThisMonth,totalExpenseThisMonth});

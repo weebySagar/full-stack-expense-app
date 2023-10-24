@@ -17,7 +17,7 @@ const Leaderboard = () => {
     })
   }, [])
     return (
-        <div className="leaderboard bg-7 rounded">
+        <div className="leaderboard bg-7 rounded h-100">
             <div className="container">
                 <div className="inner-wrapper">
                     <div className="row justify-content-center">
