@@ -12,6 +12,8 @@ import ExpenseData from './components/ExpenseData';
 import Leaderboard from './components/Leaderboard';
 import ForgotPassword from './pages/ForgotPassword';
 import DownloadedFiles from './components/DownloadedFiles';
+import {AuthProvider} from './context/AuthContext'
+import AuthPage from './pages/AuthPage';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path:'/dashboard',
-    element:<DashBoard/>,
+    element:<AuthPage Component={DashBoard} />,
     children:[
       {
         index:'/',
@@ -63,10 +65,10 @@ function App() {
  
 
   return (
-    <>
+    <AuthProvider>
      <RouterProvider router={router}/>
     <Toaster/>
-    </>
+    </AuthProvider>
   )
 }
 

@@ -5,14 +5,10 @@ import PremiumUser from '../components/PremiumUser'
 import { getUserDetails } from '../services/user-api'
 import Profile from '../components/Profile';
 import "../styles/dashboard/dashboard.scss"
+import { useAuth } from '../context/AuthContext'
 
 const DashBoard = () => {
-    const [user,setUser] = useState({});
-
-    useEffect(() => {
-        getUserDetails().then((user)=>setUser(user))
-     
-    }, [])
+    const {user} = useAuth();
    
    
   return (

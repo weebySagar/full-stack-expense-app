@@ -8,9 +8,9 @@ const Navbar = () => {
     return (
         <header>
 
-        <nav class="navbar fixed-top bg-body-tertiary py-4">
-            <div class="container">
-                <Link class="navbar-brand" to="/">Track Wise</Link>
+        <nav className="navbar fixed-top bg-body-tertiary py-4">
+            <div className="container">
+                <Link className="navbar-brand" to="/">Track Wise</Link>
                 <div className="button-wrapper d-none d-md-block">
 
                 <button className="btn-primary" onClick={()=>navigate('/user/login')}>Log In</button>

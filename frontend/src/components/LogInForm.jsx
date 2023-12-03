@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import {  Link,useNavigate } from 'react-router-dom';
 
-import {loginUser} from '../services/user-api'
+import {loginUser} from '../services/user-api';
+import {useAuth} from '../context/AuthContext';
 
 const LogInForm = () => {
     const navigate = useNavigate();
+    const {login} = useAuth()
     const [userData,setUserData] = useState({
         email:'',
         password:''
@@ -57,14 +59,21 @@ const LogInForm = () => {
         e.preventDefault();
         if(validateForm()){
             const data =loginUser(userData);
-          
+            
           toast.promise(data,{
             loading:'Hang on...',
-            success:()=>{
-            setUserData({
-              email:'',
-              password:''
-            });
+            success:(user)=>{
+            // setUserData({
+            //   email:'',
+            //   password:''
+            // });
+            console.log(user,"login form user");
+            localStorage.setItem('token',user.token)   
+            localStorage.setItem('user',JSON.stringify(user.user)) 
+            login(user.user,user.token);
+           
+            // console.log(token);
+            // login();
             navigate('/dashboard',{replace:true})
             return `Login successfully`
           },

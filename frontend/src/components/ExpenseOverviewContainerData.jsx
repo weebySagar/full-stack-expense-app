@@ -13,7 +13,7 @@ const ExpenseOverviewContainerData = ({item}) => {
                 <h2>{item.amount}</h2>
             </div>
             <div className="frequency position-absolute ">
-            <span class="badge rounded-pill text-bg-light px-3 py-2 ">Daily</span>
+            <span className="badge rounded-pill text-bg-light px-3 py-2 ">Daily</span>
             </div>
         </div>
     </div>

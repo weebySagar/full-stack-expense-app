@@ -33,7 +33,7 @@ exports.loginUser = async(req,res)=>{
             bcrypt.compare(password,user.dataValues.password,(err,result)=>{
                 if(result){
                     const token = generateToken(user.dataValues.id)
-                    res.status(200).json({message:'User login successfully',token:token})
+                    res.status(200).json({message:'User login successfully',token:token,user:user})
                 }
                 else{
                     res.status(401).json({error:'User not authorized'})

@@ -3,14 +3,18 @@ import "../styles/profile/profile.scss";
 import { BiEditAlt } from "react-icons/bi";
 import { updateUserDetails } from "../services/user-api";
 import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({ user }) => {
   const inputRef = useRef();
+  const navigate = useNavigate();
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
     password: "",
   });
+  const {logout} = useAuth();
 
   const [errors, setErrors] = useState({
     name: "",
@@ -95,8 +99,8 @@ const Profile = ({ user }) => {
               <div className="edit-profile content-wrapper mx-2">
                 <form onSubmit={handleSubmit}>
                  
-                  <div class="input">
-                    <label htmlFor="nameupdate" class="form-label">
+                  <div className="input">
+                    <label htmlFor="nameupdate" className="form-label">
                       Name
                     </label>
                     <input
@@ -114,14 +118,14 @@ const Profile = ({ user }) => {
                   </div>
                   {errors.name && <p className="text-danger">{errors.name}</p>}
                   <div className="input">
-                  <label htmlFor="emailupdate" class="form-label">
+                  <label htmlFor="emailupdate" className="form-label">
                       Email
                     </label>
                       <input type="text" value={user.email} disabled id="emailupdate"/>
                   </div>
                   {isEdit && (
                     <div className=" input">
-                       <label htmlFor="passwordupdate" class="form-label">
+                       <label htmlFor="passwordupdate" className="form-label">
                       Password
                     </label>
                         <input
@@ -151,6 +155,10 @@ const Profile = ({ user }) => {
                   )}
                 </form>
               </div>
+
+              {/* <div className="logout-btn my-4">
+                <button className="btn-primary" onClick={handleLogOut}>Log out</button>
+              </div> */}
             </div>
           </div>
         </div>
