@@ -62,14 +62,14 @@ const Charts = () => {
   
   return (
     <div className='chart'>
-        <div className="row">
-            <div className="col col-lg-6">
+        <div className="row row-gap-3">
+            <div className="col-12 col-lg-6">
                 <div className="chart-container bg-7 rounded p-4 h-100">
 
                 <Chart options={options} series={series} height='250px'/>
                 </div>
             </div>
-            <div className="col col-lg-6">
+            <div className="col-12 col-lg-6">
             <div className="chart-container bg-7 rounded p-4 h-100">
             <Chart options={optionsPie} series={seriesPie} type='pie' height='250px'/>
                 </div>

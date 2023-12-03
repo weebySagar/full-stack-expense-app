@@ -32,14 +32,14 @@ const ExpenseOverviewContainer = () => {
     },[])
 
     return (
-    <div className='expense-overview-container'>
-        <div className="inner-wrapper">
-            <div className="row">
+    <div className='expense-overview-container my-4'>
+        {/* <div className="inner-wrapper"> */}
+            <div className="row row-gap-3">
                 {   
                     expenseData?.map(item=> <ExpenseOverviewContainerData item={item}/>)
                 }
             </div>
-        </div>
+        {/* </div> */}
     </div>
   )
 }

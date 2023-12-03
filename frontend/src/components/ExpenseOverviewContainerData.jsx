@@ -3,7 +3,7 @@ import React from 'react'
 const ExpenseOverviewContainerData = ({item}) => {
     
   return (
-    <div className="col">
+    <div className="col col-12 col-md-4">
     <div className='expense-container-item  px-4'>
         <div className="inner-wrapper">
             <div className="heading">

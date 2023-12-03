@@ -17,15 +17,17 @@
             width: auto;
             border-color: #ccc;
         }
-        button{
-            background-color: $color-3;
-            color: $color-1;
-            border: none;
-        }
+       
+    }
+
+    .download-btn{
+        background-color: $color-3;
+        color: $color-1;
+        border: none;
     }
 
     .expense-table{
-        
+        overflow: scroll;
         table{
             width: 100%;
             overflow-y: scroll;

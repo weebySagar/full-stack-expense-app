@@ -8,7 +8,7 @@ import { createPaymentOrder } from "../services/payment-api";
 const PremiumUser = ({ isPremiumUser }) => {
 
   return (
-    <div className="premium-user bg-7 text-center rounded">
+    <div className="premium-user bg-7 text-center rounded mt-4 d-none d-lg-block">
       <div className="inner-wrapper">
         <div className="container">
           <div className="content-wrapper">

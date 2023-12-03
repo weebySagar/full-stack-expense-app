@@ -17,19 +17,19 @@ const DashBoard = () => {
         <div className="container-fluid h-100">
             
 
-        <div className="row h-100 row-gap-4">
-            <div className="col-2 d-flex flex-column justify-content-between" >
+        <div className="row h-100">
+            <div className="col-12 col-lg-3 col-xxl-2 d-flex flex-column " >
                 
 
-                <Sidebar/>
+                <Sidebar user={user}/>
                 <PremiumUser isPremiumUser={user?.premiumUser}/>
                 
             </div>
-            <div className="col-8">
+            <div className="col-12 col-lg-9 col-xxl-8" style={{height:'100vh',overflowY:'scroll'}}>
                 <Outlet context={{user}}/>
                 
             </div>
-            <div className="col-2">
+            <div className="d-none d-xxl-block col-2">
                 <Profile user={user}/>
             </div>
         </div>

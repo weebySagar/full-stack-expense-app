@@ -17,10 +17,55 @@
         .sidebar-icon{
             
             svg{
-                height: 20px;
-                width: 20px;
+                height: 20px ;
+                width: 20px ;
             }
         }
         
+    }
+
+    .sidebar-list.mobile{
+        .sidebar-icon{
+            svg{
+                height: 30px !important;
+                width: 30px !important;
+            }
+        }
+        .sidebar-item{
+            width: 20%;
+        }
+    }
+}
+
+@media (max-width:991px){
+    .sidebar{
+        position: fixed;
+        bottom: -3px;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        -webkit-box-shadow: 0px -15px 10px -15px #111;
+	-moz-box-shadow: 0px -15px 10px -15px #111;
+    box-shadow: 0px -15px 10px -15px #111;    
+    }
+
+    .content-wrapper{
+        width: 100%;
+    }
+
+    .sidebar-list{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .sidebar-item{
+        padding: 0 !important;
+        &#active{
+            color: $color-6;
+            border-left: none !important;
+            // border-bottom: 3px solid $color-6; 
+        }
     }
 }

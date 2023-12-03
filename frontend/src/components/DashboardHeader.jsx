@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import {IoMdAdd} from 'react-icons/io'
 import { AiOutlineWallet } from 'react-icons/ai';
-import {BsSearch} from 'react-icons/bs'
+import {BsSearch} from 'react-icons/bs';
+import { CgProfile } from "react-icons/cg";
+
 
 const DashboardHeader = () => {
   return (

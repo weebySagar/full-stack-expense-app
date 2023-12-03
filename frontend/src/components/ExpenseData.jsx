@@ -158,8 +158,8 @@ const ExpenseData = () => {
           Add Expense
         </Link>
       </div>
-      <div className="d-flex justify-content-between content-wrapper align-items-center">
-        <div className="menu  d-flex">
+      <div className="d-flex flex-column flex-md-row justify-content-between content-wrapper align-items-md-center">
+        <div className="menu  d-flex align-items-center">
           <div className="select-row-per-page row align-items-center">
             <div className="col-auto">
 
@@ -190,18 +190,19 @@ const ExpenseData = () => {
               <option value="monthly">Monthly</option>
             </select>
           </div>
-          <div className="download-btn ">
-            <button className="btn-secondary" onClick={handleDownload}>
-              Download File
-            </button>
-          </div>
+          {/* <div className="download-btn ">
+            
+          </div> */}
               </>
           }
         </div>
 
         {
           user.premiumUser &&
-          <div className="downloaded-files-btn">
+          <div className="downloaded-files-btn mt-3 mt-md-0 ">
+            <button className="btn-secondary download-btn me-2" onClick={handleDownload}>
+              Download File
+            </button>
           <Link to="downloadedfiles" className="btn-secondary">
             Downloaded Files
           </Link>
