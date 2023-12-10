@@ -32,7 +32,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials:true
 }));
-app.use(helmet());
+// app.use(helmet());
 // app.use(morgan('combined',{stream:accessLogStream}))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
