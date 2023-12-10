@@ -35,6 +35,7 @@ app.use(express.json());
 app.use(express.static('static'));
 // console.log(path.join(__dirname,'dist'));
 app.use(express.static(path.join(__dirname,'..','frontend','dist')))
+app.use('/',(req,res)=>res.sendFile(path.join(__dirname,'..','frontend','dist','index.html')))
 app.use("/user", userRoutes, paymentRoutes);
 app.use("/expense", expenseRoutes);
 app.use("/premium", premiumRoutes);
