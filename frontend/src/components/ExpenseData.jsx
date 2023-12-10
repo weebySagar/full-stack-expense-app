@@ -72,8 +72,10 @@ const ExpenseData = () => {
 
   const handleDelete = (id) => {
     deleteExpense(id).then(() =>
-      setExpenseData((prevExpense) =>
-        prevExpense.filter((expense) => expense.id !== id)
+      setExpenseData((prevExpense) =>{
+        const updatedExpense = prevExpense.expenses.filter((expense) => expense.id !== id);
+        return {...prevExpense,expenses:updatedExpense};
+      }
       )
     );
   };
@@ -110,7 +112,7 @@ const ExpenseData = () => {
       buttons.push(
         <li className={`page-item ${i == currentPage ? "active" : ""}`}>
 
-          <button class="page-link" onClick={() => goToPage(i)} key={i}>
+          <button className="page-link" onClick={() => goToPage(i)} key={i}>
             {i}
           </button>
         </li>
@@ -166,7 +168,7 @@ const ExpenseData = () => {
             <label htmlFor="select-row">Rows Per Page:</label>
             </div>
             <div className="col-auto">
-            <select class="form-select" aria-label="Default select example" id="select-row" onChange={handleLimit}>
+            <select className="form-select" aria-label="Default select example" id="select-row" onChange={handleLimit}>
               <option value="5">5</option>
               <option selected value="10">10</option>
               <option value="15">15</option>

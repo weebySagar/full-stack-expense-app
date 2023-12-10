@@ -14,6 +14,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import DownloadedFiles from './components/DownloadedFiles';
 import {AuthProvider} from './context/AuthContext'
 import AuthPage from './pages/AuthPage';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -55,8 +56,13 @@ const router = createBrowserRouter([
       {
         path:'leaderboard',
         element:<Leaderboard/>
-      }
+      },
+      
     ]
+  },
+  {
+    path:'*',
+    element:<NotFound/>
   }
 ])
 

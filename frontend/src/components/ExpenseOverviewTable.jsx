@@ -9,7 +9,6 @@ const ExpenseOverviewTable = () => {
     getAllExpenses(1,5).then((data) =>{
 
         setExpenseData({ expenses: data.expenses, totalPages: data.totalPages });
-        console.log(expenseData);
     }
     );
   }, []);

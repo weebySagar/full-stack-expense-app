@@ -1,10 +1,42 @@
-.dashboard{
-    .row{
-        &:first-child{
+@import "../global.scss";
+
+.dashboard {
+    .row {
+        &:first-child {
             height: 70%;
         }
-        &:nth-child(2){
+
+        &:nth-child(2) {
             height: 30%;
         }
+    }
+
+    .outlet {
+        height: 100vh;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 4px; /* Adjust the width as needed */
+            height: 4px;
+          }
+          
+          /* Style the scrollbar thumb (handle) */
+          &::-webkit-scrollbar-thumb {
+            background-color: $color-7;
+            border-radius: 6px;
+            border: 3px solid $color-7;
+          }
+          
+         
+          
+          /* Style the scrollbar thumb when the user hovers over it */
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: darken($color-5, 10%); /* Adjust the darkness as needed */
+          }
+          
+          /* Style the scrollbar corner */
+          &::-webkit-scrollbar-corner {
+            background-color: $color-7;
+          }
     }
 }

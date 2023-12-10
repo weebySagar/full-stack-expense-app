@@ -2,14 +2,14 @@ const {Sequelize} = require('sequelize');
 require('dotenv').config();
 
 const db = new  Sequelize(
-    process.env.SQL_DATABASE_NAME,
-    process.env.SQL_USERNAME,
-    process.env.SQL_PASSWORD,
+   
     {
-        dialect:'mysql',
-        host:process.env.SQL_HOST,
-        port:process.env.SQL_PORT,
-        ssl:false
+        dialect:'postgres',
+        database:process.env.SUPABASE_DATABASE,
+        password:process.env.SUPABASE_DATABASE_PASSWORD,
+        username:process.env.SUPABASE_USERNAME,
+        port:process.env.SUPABASE_PORT,
+        host:process.env.SUPABASE_HOST,
     });
 
 module.exports = db;

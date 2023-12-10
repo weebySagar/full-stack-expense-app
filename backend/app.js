@@ -8,6 +8,7 @@ const fs = require('fs');
 const morgan = require('morgan');
 
 const db = require("./db/database");
+const supabase = require('./db/supabase');
 const userRoutes = require("./routes/user-routes");
 const expenseRoutes = require("./routes/expense-route");
 const paymentRoutes = require("./routes/payment-route");
@@ -44,4 +45,4 @@ User.hasMany(FPG);
 User.hasMany(DownloadedFile)
 db.sync().then(() => {
   app.listen(3000);
-});
+}).catch(err=>console.log(err));

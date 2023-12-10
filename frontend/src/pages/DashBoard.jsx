@@ -9,7 +9,7 @@ import { useAuth } from '../context/AuthContext'
 
 const DashBoard = () => {
     const {user} = useAuth();
-   
+   console.log(user);
    
   return (
    <section className='dashboard py-2 vh-100'>
@@ -25,7 +25,7 @@ const DashBoard = () => {
                 <PremiumUser isPremiumUser={user?.premiumUser}/>
                 
             </div>
-            <div className="col-12 col-lg-9 col-xxl-8" style={{height:'100vh',overflowY:'scroll'}}>
+            <div className="col-12 col-lg-9 col-xxl-8 outlet">
                 <Outlet context={{user}}/>
                 
             </div>
