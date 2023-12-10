@@ -1,16 +1,27 @@
 {
-    "version": 2,
-    "name":"TrackWise",
-    "builds": [
-      {
-        "src": "app.js", 
-        "use": "@vercel/node"
+  "version": 2,
+  "name": "TrackWise",
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/",
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "OPTIONS"
+      ],
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/"
-      }
-    ]
-  }
+    }
+  ]
+}
