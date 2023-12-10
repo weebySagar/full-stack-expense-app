@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(express.static('static'));
-// console.log(path.join(__dirname,'..','frontend','dist'));
+// console.log(path.join(__dirname,'dist'));
 app.use(express.static(path.join(__dirname,'..','frontend','dist')))
 app.use("/user", userRoutes, paymentRoutes);
 app.use("/expense", expenseRoutes);
