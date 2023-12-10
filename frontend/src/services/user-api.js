@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = '/api/user';
+const baseUrl = 'https://trackwise-api.vercel.app/api/user';
 
 
 export const addUser =async(userData)=>{

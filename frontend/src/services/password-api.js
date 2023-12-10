@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "/api/password";
+const baseUrl = "https://trackwise-api.vercel.app/api/password";
 
 
 export const forgotpassword =async(email)=>{

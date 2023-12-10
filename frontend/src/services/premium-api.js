@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl ='/api/premium';
+const baseUrl ='https://trackwise-api.vercel.app/api/premium';
 
 export const getLeaderboard = async()=>{
     try {
