@@ -8,7 +8,6 @@ const fs = require('fs');
 const morgan = require('morgan');
 
 const db = require("./db/database");
-const supabase = require('./db/supabase');
 const userRoutes = require("./routes/user-routes");
 const expenseRoutes = require("./routes/expense-route");
 const paymentRoutes = require("./routes/payment-route");
@@ -33,7 +32,9 @@ app.use(morgan('combined',{stream:accessLogStream}))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(express.static('static'))
+app.use(express.static('static'));
+// console.log(path.join(__dirname,'..','frontend','dist'));
+app.use(express.static(path.join(__dirname,'..','frontend','dist')))
 app.use("/user", userRoutes, paymentRoutes);
 app.use("/expense", expenseRoutes);
 app.use("/premium", premiumRoutes);
