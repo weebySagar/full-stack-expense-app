@@ -26,13 +26,13 @@ const DownloadedFile = require('./models/downloaded-file-model');
 // )
 
 dotenv.config();
-// app.use(cors({
-//   origin:["https://trackwise-app.vercel.app"],
-//   methods:["GET","POST","PUT","DELETE"],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-//   credentials:true
-// }));
-app.use(cors());
+app.use(cors({
+  origin:["https://trackwise-app.vercel.app"],
+  methods:["GET","POST","PUT","DELETE"],
+  // allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials:true
+}));
+// app.use(cors());
 // app.use(helmet());
 // app.use(morgan('combined',{stream:accessLogStream}))
 app.use(express.urlencoded({ extended: false }));
