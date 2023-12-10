@@ -20,15 +20,15 @@ const FPG = require('./models/forgot-password-model');
 const DownloadedFile = require('./models/downloaded-file-model');
 
 //for logging
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname,'access log'),
-  {flags:'a'}
-)
+// const accessLogStream = fs.createWriteStream(
+//   path.join(__dirname,'access log'),
+//   {flags:'a'}
+// )
 
 dotenv.config();
 app.use(cors());
 app.use(helmet());
-app.use(morgan('combined',{stream:accessLogStream}))
+// app.use(morgan('combined',{stream:accessLogStream}))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
