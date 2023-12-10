@@ -58,7 +58,7 @@ To reset your password, please follow the link below:
                                 
                                 
                                 
-                                <a href="http://localhost:3000/password/resetpassword/${uuid}" target="_blank" style="background-color:#161a39;border-radius:3px;color:#fff;font-size:18px;text-decoration:none;text-align:center;display:inline-block;p-y:19px;line-height:100%;max-width:100%;padding:19px 30px">Reset Password</a>
+                                <a href="https://trackwise-app.vercel.app/password/resetpassword/${uuid}" target="_blank" style="background-color:#161a39;border-radius:3px;color:#fff;font-size:18px;text-decoration:none;text-align:center;display:inline-block;p-y:19px;line-height:100%;max-width:100%;padding:19px 30px">Reset Password</a>
                               </tr>
                             </tbody>
                           </table>
