@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:3000/user';
+const baseUrl = '/api/user';
 
 
 export const addUser =async(userData)=>{

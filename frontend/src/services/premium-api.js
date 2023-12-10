@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl ='http://localhost:3000/premium';
+const baseUrl ='/api/premium';
 
 export const getLeaderboard = async()=>{
     try {

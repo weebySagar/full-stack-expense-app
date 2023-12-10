@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000/password";
+const baseUrl = "/api/password";
 
 
 export const forgotpassword =async(email)=>{

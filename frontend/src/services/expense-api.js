@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = 'http://localhost:3000/expense';
+const baseUrl = '/api/expense';
 
 export const addExpense = async(expenseData)=>{
     try {

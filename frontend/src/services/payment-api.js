@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from 'react-hot-toast'
 
-const baseUrl = 'http://localhost:3000/user'
+const baseUrl = '/api/user'
 
 export const createPaymentOrder =async()=>{
 const {data} = await axios.post(baseUrl+'/create-order',{amount:20});
