@@ -28,7 +28,7 @@ const DownloadedFile = require('./models/downloaded-file-model');
 dotenv.config();
 app.use(cors({
   origin:["https://trackwise-app.vercel.app"],
-  methods:["GET","POST","PUT"],
+  methods:["GET","POST","PUT","DELETE"],
   credentials:true
 }));
 app.use(helmet());
