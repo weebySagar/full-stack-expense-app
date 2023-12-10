@@ -1,6 +1,0 @@
-{
-    "version":2,
-    "name":"Dokmen",
-    "builds":[{"src":"*.js","use":"@vercel/node"}],
-    "routes":[{"src":"/(.*)","dest":"/"}]
-}
