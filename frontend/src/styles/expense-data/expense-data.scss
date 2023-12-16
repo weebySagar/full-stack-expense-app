@@ -5,7 +5,6 @@
     padding:  20px;
     border-radius: 15px;
     position: relative;
-    overflow: scroll;
 
     .card{
         border: none;
@@ -77,10 +76,7 @@
             padding: 10px;
             color:#ccc;
             white-space:nowrap;
-            &.long{
-                // min-width: 350px;
-            }
-            // text-align: center;
+            
         }
     }
 

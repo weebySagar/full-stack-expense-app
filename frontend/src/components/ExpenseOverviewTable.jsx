@@ -20,7 +20,9 @@ const ExpenseOverviewTable = () => {
         <Link to="/dashboard/expense" style={{color:'#27c9d8'}}>View all</Link>
       </div>
 
-      <div className="expense-table">
+      {
+        expenseData.expenses.length > 0 
+        ?  <div className="expense-table">
         <table>
           <thead>
             <th>Description</th>
@@ -32,28 +34,25 @@ const ExpenseOverviewTable = () => {
           <tbody>
           {expenseData.expenses.map((item,index) => (
               <tr key={item.id}
-            //   className={index == isHovered ? "active" :""}
-            //   onMouseEnter={()=>setIsHovered(index)}
-            //   onMouseLeave={()=>setIsHovered(null)}
               >
                 <td>{item.description}</td>
                 <td>{item.category}</td>
                 <td>₹ {item.amount}</td>
                 <td>{item.paymentMethod}</td>
                 <td className="date">{item.date}</td>
-                {/* <td>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    Delete
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      :
+      <div className="text-wrapper text-center content-wrapper flex-grow-1">
+        <h5>You don't have any Expenses</h5>
+            <Link className="btn btn-primary" to="expense/addExpense">Add Expense</Link>
+      </div>
+      }
+     
     </div>
   );
 };
