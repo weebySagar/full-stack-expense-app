@@ -51,3 +51,27 @@
         }
     }
 }
+
+.profile-page{
+    .profile-container{
+        position: relative;
+
+        .premium-btn{
+            position: absolute;
+            top: 0;
+            right: 0;
+            box-shadow: 0px 0px 14px -7px #f09819;
+            background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+            border-radius: 0;
+            border-bottom-left-radius: 20px;
+            border-top-right-radius: 8px;
+        
+        }
+
+        .buy-premium-btn{
+            outline: none;
+            border: none;
+            background-color: $color-3;
+        }
+    }
+}
