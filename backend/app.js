@@ -27,7 +27,7 @@ const DownloadedFile = require('./models/downloaded-file-model');
 
 dotenv.config();
 app.use(cors({
-  origin:["https://trackwise-app.vercel.app"],
+  origin:["https://trackwise-app.vercel.app","http://localhost:5173"],
   methods:["GET","POST","PUT","DELETE"],
   // allowedHeaders: ['Content-Type', 'Authorization'],
   credentials:true

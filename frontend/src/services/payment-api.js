@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from 'react-hot-toast'
 
-const baseUrl = 'https://trackwise-api.vercel.app/api/user'
+const baseUrl = `${import.meta.env.VITE_BACKEND_URL}/user`
 
 export const createPaymentOrder =async()=>{
 const {data} = await axios.post(baseUrl+'/create-order',{amount:20});

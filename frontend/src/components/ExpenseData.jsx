@@ -205,7 +205,7 @@ const ExpenseData = () => {
             <button className="btn-secondary download-btn me-2" onClick={handleDownload}>
               Download File
             </button>
-          <Link to="downloadedfiles" className="btn-secondary">
+          <Link to="downloadedfiles" className="btn-secondary d-inline-block mt-3 mt-sm-0">
             Downloaded Files
           </Link>
         </div>}
@@ -229,11 +229,11 @@ const ExpenseData = () => {
               onMouseEnter={()=>setIsHovered(index)}
               onMouseLeave={()=>setIsHovered(null)}
               >
-                <td>{item.description}</td>
+                <td className="long">{item.description}</td>
                 <td>{item.category}</td>
                 <td>₹ {item.amount}</td>
                 <td>{item.paymentMethod}</td>
-                <td>{item.date}</td>
+                <td className="date">{item.date}</td>
                 <td>
                   <button
                     className="btn btn-danger btn-sm"

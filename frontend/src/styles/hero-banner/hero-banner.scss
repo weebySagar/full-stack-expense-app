@@ -6,14 +6,11 @@
     align-items: center;
 }
 
-@media (max-width:991px){
+
+@media (max-width:767px){
     .hero-banner{
         .image-wrapper{
-
-            img{
-                height: 300px;
-                width: 300px;
-            }
+            margin-top: 150px ;
         }
     }
 }

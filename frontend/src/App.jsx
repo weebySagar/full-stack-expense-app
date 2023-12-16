@@ -15,6 +15,7 @@ import DownloadedFiles from './components/DownloadedFiles';
 import {AuthProvider} from './context/AuthContext'
 import AuthPage from './pages/AuthPage';
 import NotFound from './pages/NotFound';
+import ProfilePage from './pages/ProfilePage';
 
 const router = createBrowserRouter([
   {
@@ -57,9 +58,13 @@ const router = createBrowserRouter([
         path:'leaderboard',
         element:<Leaderboard/>
       },
-      
+      {
+        path:"profile",
+        element:<ProfilePage/>
+      },
     ]
   },
+  
   {
     path:'*',
     element:<NotFound/>

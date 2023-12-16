@@ -67,7 +67,6 @@ const LogInForm = () => {
             //   email:'',
             //   password:''
             // });
-            console.log(user,"login form user");
             localStorage.setItem('token',user.token)   
             localStorage.setItem('user',JSON.stringify(user.user)) 
             login(user.user,user.token);

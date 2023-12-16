@@ -5,6 +5,7 @@
     padding:  20px;
     border-radius: 15px;
     position: relative;
+    overflow: scroll;
 
     .card{
         border: none;
@@ -28,6 +29,7 @@
 
     .expense-table{
         overflow: scroll;
+
         &::-webkit-scrollbar {
             width: 4px; /* Adjust the width as needed */
             height: 4px;
@@ -69,10 +71,15 @@
         }
         th{
             padding: 20px 10px;
+            white-space: nowrap;
         }
         td{
             padding: 10px;
             color:#ccc;
+            white-space:nowrap;
+            &.long{
+                // min-width: 350px;
+            }
             // text-align: center;
         }
     }
@@ -99,6 +106,20 @@
         .page-link{
             background-color: transparent;
             color: $color-1;
+        }
+    }
+}
+
+@media (max-width:767px){
+    .expense-data{
+        margin-bottom: 80px;
+        .expense-table{
+            td{
+                &.date{
+                    white-space: nowrap;
+                }
+                white-space:unset;
+            }
         }
     }
 }

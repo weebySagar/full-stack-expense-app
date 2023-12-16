@@ -102,12 +102,12 @@ const AddExpenseForm = () => {
     }
     return (
         <div className="row">
-            <div className="col-4">
+            <div className="col-12 col-md-4">
                 <p className='pt-4'>Add all of yours expense information in this form </p>
             </div>
-            <div className="col-8">
+            <div className="col-12 col-md-8">
 
-                <form className='p-4' noValidate onSubmit={handleSubmit}>
+                <form className='p-md-4' noValidate onSubmit={handleSubmit}>
                     <div className="mb-3 col-12">
                         <label htmlFor="date" className="form-label">Date</label>
                         <input type="date" className="form-control" id="date" name='date' aria-describedby="date" onChange={handeInputChange} value={expenseData.date} />
@@ -163,7 +163,7 @@ const AddExpenseForm = () => {
 
                     </div>
 
-                    <div className="col-4">
+                    <div className="col-md-4">
                         <button type="submit" className='btn-primary'>Add Expense</button>
                     </div>
                 </form>

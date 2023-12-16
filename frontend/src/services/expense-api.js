@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = 'https://trackwise-api.vercel.app/api/expense';
+const baseUrl = `${import.meta.env.VITE_BACKEND_URL}/expense`;
 
 export const addExpense = async(expenseData)=>{
     try {

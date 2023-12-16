@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import SignUpForm from '../components/SignUpForm';;
 import "../styles/signup-page/signup-page.scss";
+import LogInImage from "../assets/login.svg"
+
 
 
 
@@ -15,8 +17,8 @@ const SignUpPage = () => {
 
                 <div className="container">
                     <div className="inner-wrapper">
-                        <div className="row">
-                            <div className="col-12 col-md-8 col-lg-5">
+                        <div className="row align-items-center">
+                            <div className="col-12 col-md-6 col-lg-5 order-2 order-md-1">
                                 <div className="text-content">
                                     <div className="subheading">
                                         <p>
@@ -32,6 +34,11 @@ const SignUpPage = () => {
                                 </div>
                                 <div className="signup-form-container">
                                     <SignUpForm />
+                                </div>
+                            </div>
+                            <div className="col-12 col-md-6 col-lg-7 order-1 order-md-2">
+                                <div className="img-wrapper">
+                                    <img src={LogInImage} alt="" className='img-fluid'/>
                                 </div>
                             </div>
                         </div>

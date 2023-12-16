@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'https://trackwise-api.vercel.app/api/user';
+const baseUrl = `${import.meta.env.VITE_BACKEND_URL}/user`;
 
 
 export const addUser =async(userData)=>{

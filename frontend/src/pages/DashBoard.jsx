@@ -9,7 +9,6 @@ import { useAuth } from '../context/AuthContext'
 
 const DashBoard = () => {
     const {user} = useAuth();
-   console.log(user);
    
   return (
    <section className='dashboard py-2 vh-100'>

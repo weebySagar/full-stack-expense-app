@@ -40,7 +40,7 @@ const ExpenseOverviewTable = () => {
                 <td>{item.category}</td>
                 <td>₹ {item.amount}</td>
                 <td>{item.paymentMethod}</td>
-                <td>{item.date}</td>
+                <td className="date">{item.date}</td>
                 {/* <td>
                   <button
                     className="btn btn-danger btn-sm"

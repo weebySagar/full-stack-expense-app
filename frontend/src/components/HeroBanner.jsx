@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../styles/hero-banner/hero-banner.scss";
 import Image from "../assets/herobannerbg.png";
+import Hero from "../assets/herobanner.svg"
 
 
 const HeroBanner = () => {
@@ -12,8 +13,8 @@ const navigate = useNavigate()
                 <div className="inner-wrapper">
 
                 
-                <div className="row flex-column-reverse flex-lg-row align-items-center">
-                    <div className="col-12 col-md-12 col-lg-6 ">
+                <div className="row flex-column-reverse flex-md-row align-items-center">
+                    <div className="col-12 col-md-6">
                     <div className="inner-wrapper">
                         <div className="text-content">
                             <div className="subtitle">
@@ -36,9 +37,9 @@ const navigate = useNavigate()
                         </div>
                         </div>
                     </div>
-                    <div className="col-12 col-md-12 col-lg-6 ">
-                        <div className="image-wraper">
-                            <img src={Image} alt="" className='img-fluid'/>
+                    <div className="col-12 col-md-6">
+                        <div className="image-wrapper">
+                            <img src={Hero} alt="" className='img-fluid'/>
                         </div>
                     </div>
                 </div>
