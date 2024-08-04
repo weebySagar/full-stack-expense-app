@@ -64,3 +64,20 @@ a{
     background-color: $color-7 !important;
     color: $color-1;
 }
+
+.loading-img {
+    animation: moveUpDown 3s ease-in-out infinite;
+}
+
+
+@keyframes moveUpDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
