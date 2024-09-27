@@ -1,66 +1,67 @@
 @import "./theme-variable.scss";
-body{
+
+body {
     background-color: $color-5;
     color: $font-color;
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
         width: 4px;
     }
 
     &::-webkit-scrollbar-track {
         background: black;
-      }
+    }
 
     &::-webkit-scrollbar-thumb:hover {
-        background: #555; 
-      }
+        background: #555;
+    }
 }
 
-a{
+a {
     text-decoration: none;
     color: $color-1;
 }
 
 
 
-    .btn-primary{
-        background-color: $button-primary-background-color;
-        color: $button-primary-text-color;
-        border-radius: $button-primary-border-radius;
-        outline: none;
-        padding:8px 20px;
-        border: none    ;
+.btn-primary {
+    background-color: $button-primary-background-color;
+    color: $button-primary-text-color;
+    border-radius: $button-primary-border-radius;
+    outline: none;
+    padding: 8px 20px;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: $button-secondary-background-color;
+    color: $button-secondary-text-color;
+    border-radius: $button-secondary-border-radius;
+    outline: none;
+    padding: 8px 20px;
+    border: 1px solid $button-secondary-border-color;
+
+    &:hover {
+        background-color: $button-secondary-hover-background-color;
+        color: $button-secondary-hover-text-color;
     }
-
-    .btn-secondary{
-        background-color: $button-secondary-background-color;
-        color: $button-secondary-text-color;
-        border-radius: $button-secondary-border-radius;
-        outline: none;
-        padding:8px 20px;
-        border:1px solid $button-secondary-border-color;
-
-        &:hover{
-            background-color: $button-secondary-hover-background-color;
-            color: $button-secondary-hover-text-color;
-        }
-    }
+}
 
 
-.inner-wrapper{
+.inner-wrapper {
     padding-top: $spacing-top;
     padding-bottom: $spacing-botom;
 }
 
-.content-wrapper{
+.content-wrapper {
     margin-top: $content-spacing
 }
 
-.subheading{
+.subheading {
     opacity: 0.8;
 }
 
-.bg-7{
+.bg-7 {
     background-color: $color-7 !important;
     color: $color-1;
 }
@@ -69,6 +70,11 @@ a{
     animation: moveUpDown 3s ease-in-out infinite;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
 @keyframes moveUpDown {
 

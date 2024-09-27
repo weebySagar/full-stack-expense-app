@@ -113,7 +113,7 @@ const SignUpForm = () => {
           {errors.password && <p className='text-danger'>{errors.password}</p>}
 
           <button type="submit" className="btn btn-primary my-4">Create Account</button>
-          <p>Already a Member ? <Link style={{ color: "#27c9d8" }} to={"/user/login"}>Log In</Link></p>
+          <p>Already a Member ? <Link style={{ color: "#27c9d8" }} to={"/login"}>Log In</Link></p>
 
         </form>
       </div>

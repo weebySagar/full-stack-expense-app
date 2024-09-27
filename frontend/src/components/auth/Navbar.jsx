@@ -16,8 +16,8 @@ const Navbar = () => {
                     </Link>
                     <div className="button-wrapper d-none d-md-block">
 
-                        <button className="btn-primary" onClick={() => navigate('/user/login')}>Log In</button>
-                        <button className="btn-secondary mx-2" onClick={() => navigate('/user/signup')}>Create Account</button>
+                        <button className="btn-primary" onClick={() => navigate('/login')}>Log In</button>
+                        <button className="btn-secondary mx-2" onClick={() => navigate('/signup')}>Create Account</button>
                     </div>
                 </div>
             </nav>

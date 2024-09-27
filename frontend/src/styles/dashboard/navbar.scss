@@ -1,0 +1,35 @@
+@import "../theme-variable.scss";
+
+.dashboard-navbar {
+    display: flex;
+    padding: 16px;
+    gap: 50px;
+
+    .nav-link-items {
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        ul {
+            display: flex;
+            align-items: center;
+            // justify-content: space-evenly;
+            flex: 1;
+            gap: 30px;
+        }
+
+        .link-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            &:hover {
+                color: $color-6;
+            }
+
+            &.active {
+                color: $color-6;
+            }
+        }
+    }
+}

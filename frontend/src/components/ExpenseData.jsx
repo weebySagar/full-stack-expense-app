@@ -14,7 +14,7 @@ import { downloadFile } from "../services/user-api";
 import Pagination from "./Pagination";
 
 const ExpenseData = () => {
-  const { user } = useOutletContext();
+  // const { user } = useOutletContext();
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(10)
 
@@ -26,17 +26,17 @@ const ExpenseData = () => {
   const [expenseTime, setExpenseTime] = useState("");
 
   useEffect(() => {
-    getAllExpenses(currentPage,limit).then((data) =>
+    getAllExpenses(currentPage, limit).then((data) =>
       setExpenseData({ expenses: data.expenses, totalPages: data.totalPages })
     );
     if (expenseTime == "weekly") {
-      const expenseByWeekly = getExpensesByWeekly(currentPage,limit);
+      const expenseByWeekly = getExpensesByWeekly(currentPage, limit);
       toast.promise(expenseByWeekly, {
         success: (data) => {
           setExpenseData({
             expenses: data.expensesThisWeek,
             totalExpense: data.totalExpenseThisWeek[0].totalExpense,
-            totalPages:data.totalPages
+            totalPages: data.totalPages
           });
           return "Weekly Data";
         },
@@ -47,13 +47,13 @@ const ExpenseData = () => {
       });
     }
     if (expenseTime == "monthly") {
-      const expenseByMonthly = getExpensesByMonthly(currentPage,limit);
+      const expenseByMonthly = getExpensesByMonthly(currentPage, limit);
       toast.promise(expenseByMonthly, {
         success: (data) => {
           setExpenseData({
             expenses: data.expensesThisMonth,
             totalExpense: data.totalExpenseThisMonth[0].totalExpense,
-            totalPages:data.totalPages
+            totalPages: data.totalPages
           });
           return "Monthly Data";
         },
@@ -63,7 +63,7 @@ const ExpenseData = () => {
         },
       });
     }
-  }, [expenseTime, currentPage,limit]);
+  }, [expenseTime, currentPage, limit]);
 
   const handleSelectChange = (e) => {
     setCurrentPage(1);
@@ -72,9 +72,9 @@ const ExpenseData = () => {
 
   const handleDelete = (id) => {
     deleteExpense(id).then(() =>
-      setExpenseData((prevExpense) =>{
+      setExpenseData((prevExpense) => {
         const updatedExpense = prevExpense.expenses.filter((expense) => expense.id !== id);
-        return {...prevExpense,expenses:updatedExpense};
+        return { ...prevExpense, expenses: updatedExpense };
       }
       )
     );
@@ -121,11 +121,11 @@ const ExpenseData = () => {
     return buttons;
   };
 
-  const handleLimit=(e)=>{
+  const handleLimit = (e) => {
     setLimit(e.target.value)
   }
 
-  const [isHovered,setIsHovered] = useState(null);
+  const [isHovered, setIsHovered] = useState(null);
 
   if (expenseData.expenses.length == 0) {
     return (
@@ -165,37 +165,37 @@ const ExpenseData = () => {
           <div className="select-row-per-page row align-items-center">
             <div className="col-auto">
 
-            <label htmlFor="select-row">Rows Per Page:</label>
+              <label htmlFor="select-row">Rows Per Page:</label>
             </div>
             <div className="col-auto">
-            <select className="form-select" aria-label="Default select example" id="select-row" onChange={handleLimit}>
-              <option value="5">5</option>
-              <option selected value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-            </select>
+              <select className="form-select" aria-label="Default select example" id="select-row" onChange={handleLimit}>
+                <option value="5">5</option>
+                <option selected value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
             </div>
           </div>
 
 
-      { user.premiumUser &&
-      <>
-          <div className="select-menu mx-4">
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              onChange={handleSelectChange}
-              value={expenseTime}
-              >
-              <option value="daily" selected>Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
-            </select>
-          </div>
-          {/* <div className="download-btn ">
+          {user.premiumUser &&
+            <>
+              <div className="select-menu mx-4">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  onChange={handleSelectChange}
+                  value={expenseTime}
+                >
+                  <option value="daily" selected>Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+              {/* <div className="download-btn ">
             
           </div> */}
-              </>
+            </>
           }
         </div>
 
@@ -205,11 +205,11 @@ const ExpenseData = () => {
             <button className="btn-secondary download-btn me-2" onClick={handleDownload}>
               Download File
             </button>
-          <Link to="downloadedfiles" className="btn-secondary d-inline-block mt-3 mt-sm-0">
-            Downloaded Files
-          </Link>
-        </div>}
-      
+            <Link to="downloadedfiles" className="btn-secondary d-inline-block mt-3 mt-sm-0">
+              Downloaded Files
+            </Link>
+          </div>}
+
       </div>
 
       <div className="expense-table content-wrapper">
@@ -223,11 +223,11 @@ const ExpenseData = () => {
             <th>Action</th>
           </thead>
           <tbody className="mt-4">
-            {expenseData.expenses.map((item,index) => (
+            {expenseData.expenses.map((item, index) => (
               <tr key={item.id}
-              className={index == isHovered ? "active" :""}
-              onMouseEnter={()=>setIsHovered(index)}
-              onMouseLeave={()=>setIsHovered(null)}
+                className={index == isHovered ? "active" : ""}
+                onMouseEnter={() => setIsHovered(index)}
+                onMouseLeave={() => setIsHovered(null)}
               >
                 <td className="long">{item.description}</td>
                 <td>{item.category}</td>

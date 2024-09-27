@@ -100,8 +100,8 @@ const LogInForm = () => {
 
 
           <button type="submit" className="btn btn-primary my-4">Log In</button>
-          <p>Don't have an account ? <Link style={{ color: "#27c9d8" }} to="/user/signup">Create Account</Link></p>
-          <p><Link to='/password/forgotpassword' style={{ color: "#27c9d8" }}>Forgot Password ?</Link></p>
+          <p>Don't have an account ? <Link style={{ color: "#27c9d8" }} to="/signup">Create Account</Link></p>
+          <p><Link to='/forgotpassword' style={{ color: "#27c9d8" }}>Forgot Password ?</Link></p>
 
         </form>
       </div>
