@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import LogInForm from '../components/LogInForm';
-import "../styles/signup-page/signup-page.scss";
-import LogInImage from "../assets/login.svg"
+import Navbar from '@components/auth/Navbar.jsx';
+import LogInForm from '@components/form/LogInForm';
+import "@styles/signup-page/signup-page.scss";
+import LogInImage from "@assets/login.svg"
 
 
 
@@ -26,7 +26,7 @@ const LogInPage = () => {
                                     <div className="heading">
                                         <h1>
 
-                                           Log In
+                                            Log In
                                         </h1>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@ const LogInPage = () => {
                             <div className="col-12 col-md-6 col-lg-7 order-1 order-md-2">
                                 <div className="img-wrapper">
 
-                                <img src={LogInImage} alt="" className='img-fluid' />
+                                    <img src={LogInImage} alt="" className='img-fluid' />
                                 </div>
                             </div>
                         </div>

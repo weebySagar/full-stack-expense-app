@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import SignUpForm from '../components/SignUpForm';;
+import Navbar from '../components/auth/Navbar';
+import SignUpForm from '../components/form/SignUpForm';;
 import "../styles/signup-page/signup-page.scss";
 import LogInImage from "../assets/login.svg"
 
@@ -38,7 +38,7 @@ const SignUpPage = () => {
                             </div>
                             <div className="col-12 col-md-6 col-lg-7 order-1 order-md-2">
                                 <div className="img-wrapper">
-                                    <img src={LogInImage} alt="" className='img-fluid'/>
+                                    <img src={LogInImage} alt="" className='img-fluid' />
                                 </div>
                             </div>
                         </div>

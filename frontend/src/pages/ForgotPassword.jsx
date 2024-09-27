@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import ForgotPasswordForm from '../components/ForgotPasswordForm'
+import Navbar from '@components/auth/Navbar'
+import ForgotPasswordForm from '@components/form/ForgotPasswordForm'
 
 const ForgotPassword = () => {
   return (
     <div className='forgot-password vh-100'>
-      <Navbar/>
-      <ForgotPasswordForm/>
+      <Navbar />
+      <ForgotPasswordForm />
 
     </div>
   )

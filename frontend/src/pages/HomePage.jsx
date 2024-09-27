@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '@components/auth/Navbar'
 import HeroBanner from '../components/HeroBanner'
 
 const HomePage = () => {
   return (
     <div>
-        <Navbar/>
-        <HeroBanner/>
+      <Navbar />
+      <HeroBanner />
     </div>
   )
 }
