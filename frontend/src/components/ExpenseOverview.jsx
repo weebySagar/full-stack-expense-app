@@ -8,11 +8,11 @@ import ExpenseOverviewTable from './ExpenseOverviewTable';
 const ExpenseOverview = () => {
   return (
     <div className='expense-overview'>
-        <DashboardHeader/>
-        <ExpenseOverviewContainer/>
-        <Charts/>
-        <ExpenseOverviewTable/>
-        {/* <ExpenseOverviewContainer/> */}
+      {/* <DashboardHeader/> */}
+      <ExpenseOverviewContainer />
+      <Charts />
+      <ExpenseOverviewTable />
+      {/* <ExpenseOverviewContainer/> */}
     </div>
   )
 }

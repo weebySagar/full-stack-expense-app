@@ -5,7 +5,7 @@ import AuthLayout from '@/layout/AuthLayout';
 export default function View({ view, layout, title }) {
 
     const layouts = {
-        apps: AppLayout,
+        app: AppLayout,
         auth: AuthLayout
     }
     if (title) document.title = title;

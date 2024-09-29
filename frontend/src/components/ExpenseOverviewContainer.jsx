@@ -3,45 +3,43 @@ import ExpenseOverviewContainerData from './ExpenseOverviewContainerData'
 import { getAllExpenses } from '../services/expense-api'
 
 const ExpenseOverviewContainer = () => {
-    const [expenseData ,setExpenseData] = useState([
+    const [expenseData, setExpenseData] = useState([
         {
-            title:'Total Income',
-            amount:'50,000',
+            title: 'Total Income',
+            amount: '50,000',
 
         },
         {
-            title:'Total Expenses',
-            amount:0,
+            title: 'Total Expenses',
+            amount: 0,
 
         },
         {
-            title:'Total Balance',
-            amount:'50,000',
+            title: 'Total Balance',
+            amount: '50,000',
 
         },
     ])
 
-    useEffect(()=>{
-        getAllExpenses().then(data=>{
-            setExpenseData(prevData=>{
+    useEffect(() => {
+        getAllExpenses().then(data => {
+            setExpenseData(prevData => {
                 const updatedData = [...prevData];
-                updatedData[1] = {...updatedData[1],amount:data.totalExpense}
+                updatedData[1] = { ...updatedData[1], amount: data.totalExpense }
                 return updatedData
             })
-            })
-    },[])
+        })
+    }, [])
 
     return (
-    <div className='expense-overview-container my-4'>
-        {/* <div className="inner-wrapper"> */}
+        <div className='expense-overview-container mb-4'>
             <div className="row row-gap-3">
-                {   
-                    expenseData?.map(item=> <ExpenseOverviewContainerData item={item}/>)
+                {
+                    expenseData?.map(item => <ExpenseOverviewContainerData item={item} />)
                 }
             </div>
-        {/* </div> */}
-    </div>
-  )
+        </div>
+    )
 }
 
 

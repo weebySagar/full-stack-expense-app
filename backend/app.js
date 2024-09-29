@@ -27,10 +27,10 @@ const DownloadedFile = require('./models/downloaded-file-model');
 
 dotenv.config();
 app.use(cors({
-  origin:["https://trackwise-app.vercel.app","http://localhost:5173","http://192.168.2.110:5173"],
-  methods:["GET","POST","PUT","DELETE"],
+  origin: ["https://trackwise-app.vercel.app", "http://localhost:5173", "http://192.168.2.110:5173"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   // allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials:true
+  credentials: true
 }));
 // app.use(cors());
 // app.use(helmet());
@@ -45,12 +45,12 @@ app.use(express.static('static'));
 app.use("/api/user", userRoutes, paymentRoutes);
 app.use("/api/expense", expenseRoutes);
 app.use("/api/premium", premiumRoutes);
-app.use('/api/password',passwordRoutes)
+app.use('/api/password', passwordRoutes)
 
 Expense.belongsTo(User);
 User.hasMany(Expense);
 User.hasMany(FPG);
 User.hasMany(DownloadedFile)
 db.sync().then(() => {
-  app.listen(3000);
-}).catch(err=>console.log(err));
+  app.listen(4000);
+}).catch(err => console.log(err));

@@ -1,0 +1,57 @@
+@import '../theme-variable.scss';
+
+.custom-table {
+    width: 100%;
+    min-width: max-content;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    text-indent: 0;
+    color: #ccc;
+
+    input[type=checkbox] {
+        width: 25px;
+        height: 25px;
+        min-height: 25px;
+        min-width: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        cursor: pointer;
+        appearance: none;
+    }
+
+    input[type=checkbox]:checked {
+
+        border: 1px solid $color-6;
+        border-radius: 5px;
+        background-color: $color-6;
+        background-image: url('data:image/svg+xml;charset=utf-8;base64,PHN2ZyBoZWlnaHQ9IjQyIiB2aWV3Qm94PSIwIDAgNDggNDIiIHdpZHRoPSI0OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMzQ3LjU4MzgxOCAyMDguMTExMzIxYy0xLjcxODcxOS0xLjIxMDc4MS00LjI4MjAzMS0uNzU5OTM3LTUuNDg4ODc1Ljk0Njk2OWwtMjEuMjg2MTI1IDMwLjE1OTI4MS0xMi41MDc0NjktOS4zODMwNjJjLS42ODcwOTQtLjUxMzg0NC0xLjUwMjE1Ni0uNzgzNTYzLTIuMzU2NTk0LS43ODM1NjMtMS4yNTQwOTMgMC0yLjQwNTgxMi41NzI5MDYtMy4xNTc4NzUgMS41NzUtLjYzLjgzODY4OC0uODk1NzgxIDEuODc2MjE5LS43NDYxNTYgMi45MTc2ODguMTQ3NjU2IDEuMDM5NS42OTQ5NjkgMS45NjI4NDMgMS41MzM2NTYgMi41OTI4NDNsMTUuNzUgMTEuODEyNWMuODM4Njg4LjYzIDEuOTIzNDY5LjkwNTYyNSAyLjk3Njc1LjczODI4MiAxLjA0MzQzOC0uMTY1Mzc1IDEuOTk0MzQ0LS43NTQwMzIgMi42MDQ2NTctMS42MTgzMTNsMjMuNjIzMDMxLTMzLjQ2ODc1YzEuMjUyMTI1LTEuNzcxODc1LjgyNjg3NS00LjIzNDc4MS0uOTQ1LTUuNDg4ODc1IiBmaWxsPSIjZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMDIgLTIwNykiLz48L3N2Zz4=');
+        background-position: center center;
+        background-size: 0.8em;
+        background-repeat: no-repeat;
+    }
+
+    thead {
+        th {
+            padding: 12px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+        }
+
+        background-color: $color-7;
+
+    }
+
+    tr:nth-child(even) {
+        background-color: $color-7;
+    }
+
+
+
+    td {
+        padding: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+}

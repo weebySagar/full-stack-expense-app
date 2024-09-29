@@ -16,7 +16,7 @@ export default function Navbar() {
         {
             icon: <AiOutlineWallet size={24} />,
             title: 'Expense',
-            link: '/expense'
+            link: '/expenses'
         },
         {
             icon: <MdOutlineLeaderboard size={24} />,
@@ -46,19 +46,23 @@ export default function Navbar() {
 
     ]
     return (
-        <div className='dashboard-navbar bg-7 rounded'>
-            <div className="app-logo">
-                <h3>Track Wise</h3>
-            </div>
+        <header>
+            <div className="container-fluid">
+                <div className='dashboard-navbar bg-7 rounded'>
+                    <div className="app-logo">
+                        <h3>Track Wise</h3>
+                    </div>
 
-            <div className="nav-link-items">
-                <ul>
-                    {
-                        navbarItems.map(data => <LinkItem key={data.link} {...data} />)
-                    }
-                </ul>
+                    <div className="nav-link-items">
+                        <ul>
+                            {
+                                navbarItems.map(data => <LinkItem key={data.link} {...data} />)
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        </header>
     )
 }
 
