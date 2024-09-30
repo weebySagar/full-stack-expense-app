@@ -1,3 +1,4 @@
+import AddExpense from "@/pages/AddExpense";
 import DashBoard from "@/pages/DashBoard";
 import Expenses from "@/pages/Expenses";
 import ForgotPassword from "@/pages/ForgotPassword";
@@ -44,7 +45,7 @@ const routes = [
     },
     {
         path: '/expenses/:id',
-        view: Expenses,
+        view: AddExpense,
         layout: 'app'
     },
     {

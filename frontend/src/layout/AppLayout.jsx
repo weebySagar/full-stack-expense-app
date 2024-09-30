@@ -5,7 +5,9 @@ export default function AppLayout({ children }) {
     return (
         <main>
             <Navbar />
-            {children}
+            <div className="container-fluid mt-4">
+                {children}
+            </div>
         </main>
     )
 }

@@ -31,6 +31,9 @@ a {
     outline: none;
     padding: 8px 20px;
     border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .btn-secondary {
@@ -40,6 +43,9 @@ a {
     outline: none;
     padding: 8px 20px;
     border: 1px solid $button-secondary-border-color;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 
     &:hover {
         background-color: $button-secondary-hover-background-color;
