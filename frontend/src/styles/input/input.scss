@@ -1,0 +1,46 @@
+@import "../theme-variable.scss";
+
+.input {
+    .form-control {
+        background-color: $color-5;
+        color: $color-1;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0.8;
+
+
+        &::placeholder {
+            color: $color-1;
+        }
+
+        &:focus {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: none;
+        }
+
+        &::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    }
+
+    .form-label {
+        color: #ccc;
+    }
+
+    .form-select {
+        background-color: $color-5;
+        color: $color-1;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0.8;
+
+        option {
+            &:nth-child(1) {
+                color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        &:focus {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: none;
+        }
+    }
+}
