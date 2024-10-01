@@ -3,6 +3,7 @@ import DatePicker from "@/components/datepicker/DatePicker";
 import Button from "@/components/ui/button/Button";
 import React, { useState } from "react";
 import { DateTime } from "luxon";
+import Select from "@/components/select/Select";
 
 export default function Expenses() {
   const fetchExpenses = () => {
@@ -12,6 +13,26 @@ export default function Expenses() {
   const [startDate, setStartDate] = useState(DateTime.now());
   const [endDate, setEndDate] = useState(DateTime.now().plus({ days: 7 }));
   const [dateRange, setDateRange] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedPayment, setSelectedPayment] = useState("");
+
+  const categories = [
+    { label: "Groceries", values: "groceries" },
+    { label: "Healthcare", values: "healthcare" },
+    { label: "Education", values: "education" },
+    { label: "Clothing", values: "clothing" },
+    { label: "Entertainment", values: "entertainment" },
+    { label: "Travel", values: "travel" },
+    { label: "Miscellaneous", values: "miscellaneous" },
+  ];
+
+  const payments = [
+    { label: "Cash", values: "cash" },
+    { label: "Debit Card", values: "debit_card" },
+    { label: "Credit Card", values: "credit_card" },
+    { label: "Net Banking", values: "net_banking" },
+    { label: "Online (UPI,Wallet)", values: "upi_wallet" },
+  ];
 
   const handleDateChange = (range) => {
     const startDate = range.selection.startDate;
@@ -27,6 +48,16 @@ export default function Expenses() {
     )}`;
     setDateRange(rangeText);
   };
+
+  const handleCategoryChange = (value) => {
+    if (!value) setSelectedCategory("");
+    else setSelectedCategory(value.values);
+  };
+
+  const handlePaymentChange = (value) => {
+    if (!value) setSelectedPayment("");
+    else setSelectedPayment(value.values);
+  };
   return (
     <div className="container-fluid mt-4">
       <div className="row">
@@ -37,6 +68,26 @@ export default function Expenses() {
               endDate={endDate}
               handleDateChange={handleDateChange}
               dateRangeText={dateRange}
+            />
+            <Select
+              options={categories}
+              placeholder={"Select Category"}
+              onChange={handleCategoryChange}
+              value={
+                categories?.find(
+                  (category) => category.values === selectedCategory
+                ) || null
+              }
+            />
+            <Select
+              options={payments}
+              placeholder={"Select Payment Type"}
+              onChange={handlePaymentChange}
+              value={
+                payments?.find(
+                  (payment) => payment.values === selectedPayment
+                ) || null
+              }
             />
           </div>
         </div>

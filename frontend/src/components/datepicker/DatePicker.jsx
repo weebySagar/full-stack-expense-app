@@ -18,7 +18,7 @@ export default function DatePicker({
         // disabled={true}
         type={"text"}
         placeholder="Date Range"
-        label={"Select Date"}
+        // label={"Select Date"}
         value={dateRangeText}
       />
       <div
