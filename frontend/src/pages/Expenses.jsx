@@ -4,7 +4,8 @@ import Button from "@/components/ui/button/Button";
 import React, { useState } from "react";
 import { DateTime } from "luxon";
 import Select from "@/components/select/Select";
-
+// import Slider from "rc-slider";
+import Slider from "@/components/slider/Slider";
 export default function Expenses() {
   const fetchExpenses = () => {
     try {
@@ -15,6 +16,7 @@ export default function Expenses() {
   const [dateRange, setDateRange] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedPayment, setSelectedPayment] = useState("");
+  const [amountRange, setAmountRange] = useState([10, 80]);
 
   const categories = [
     { label: "Groceries", values: "groceries" },
@@ -88,6 +90,14 @@ export default function Expenses() {
                   (payment) => payment.values === selectedPayment
                 ) || null
               }
+            />
+            {/* <Slider range={[0, 80]} min={0} max={100} /> */}
+            <Slider
+              min={0}
+              max={100}
+              range={amountRange}
+              setRange={setAmountRange}
+              label={"Select Amount Range"}
             />
           </div>
         </div>
