@@ -1,0 +1,99 @@
+@import '../theme-variable.scss';
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+    .dropbtn {
+        display: flex;
+        align-items: center;
+        max-height: 39px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background: $color-5 !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 5px;
+
+        svg {
+            margin-top: 1px;
+            margin-left: 5px;
+
+            &:hover {
+                color: #38B7FB;
+            }
+        }
+
+        &.disabled {
+            svg {
+                color: #C2C2C2;
+
+                &:hover {
+                    color: #C2C2C2;
+                }
+            }
+        }
+    }
+
+    .dropBtnMore {
+        color: $color-6;
+        border: 2px solid $color-6;
+        border-radius: 5px;
+        padding: 2.5px;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-7;
+    }
+
+    &:hover .dropbtn {
+        input[type="checkbox"]:checked {
+            background-color: $color-6;
+            border-color: #b2dfc1 !important;
+        }
+    }
+}
+
+.csDropdownDismiss {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: red;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    min-width: 130px;
+    max-height: 250px;
+    // background: #F9F9F9;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: -2px 2px 4px rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    z-index: 1;
+    overflow: auto;
+
+    &.right {
+        margin-left: -100px;
+    }
+
+    div {
+        background-color: $color-7;
+        padding: 5px 10px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        word-wrap: break-word;
+
+        &:hover {
+            background-color: $color-5;
+            color: $color-6;
+        }
+    }
+}
